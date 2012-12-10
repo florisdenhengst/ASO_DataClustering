@@ -7,20 +7,21 @@ inputfile = open(os.path.abspath('test.txt'), 'r')
 inputtext = inputfile.read()
 delinput = re.split('/', inputtext)
 
-for i in range(1, 10):
+j = 1
+print len(delinput)
+for i in range(1, len(delinput)):
 	if i%4 == 0:
 		buf = StringIO.StringIO()
 		
-		print delinput[i]
+		print "Processing review " + str(j) + " of " + str(len(delinput)/4)
 
 		c = pycurl.Curl()
 		c.setopt(c.URL, 'http://ic.vupr.nl:9081/ner-prop-opin')
 		c.setopt(c.WRITEFUNCTION, buf.write)
 		c.setopt(c.POST, 1)
 		
-		path = os.path.dirname(os.path.abspath("text.txt")) + "/KAF/dummy.txt"
-		print path
-		
+		path = os.path.dirname(os.path.abspath("python-curl-test.py")) + "/KAF/dummy.txt"
+				
 		d = open(path, 'w')
 		d.write(delinput[i])
 
@@ -28,8 +29,9 @@ for i in range(1, 10):
 		c.perform()
 		c.close()
 
-		f = open((os.path.dirname(os.path.abspath("text.txt")) + '/KAF/' + str(i) + ".xml"), 'w')
+		f = open((os.path.dirname(os.path.abspath("python-curl-test.py")) + '/KAF/review-' + str(j) + ".xml"), 'w')
 		f.write(buf.getvalue())
 		f.close()
+		j += 1
 
 os.remove(path)
