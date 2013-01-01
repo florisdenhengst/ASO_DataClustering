@@ -11,7 +11,7 @@ pickupConst = 1
 dropConst = 1
 alpha = 1
 
-bLoop = True
+bLoop = False
 bAllAnts = True
 speed = 0.03
 
@@ -120,30 +120,38 @@ def drawAnts():
 
 def setSpeed():
 	global speed
-	if speed == 0.0:
+	global tSpeed
+	if speed == 0.0001:
 		speed = 0.03
 	elif speed == 0.03:
 		speed = 0.1
 	elif speed == 0.1:
 		speed = 1
 	else:
-		speed = 0.0
+		speed = 0.0001
+	tSpeed.set("Speed: "+str(1/speed))
 	return
 	
 def setPause():
 	global bLoop
+	global tPlay
 	if bLoop == True:
 		bLoop = False
+		tPlay.set("Play")
 	else:
 		bLoop = True
+		tPlay.set("Pause")
 	return
 	
 def setAllAnts():
 	global bAllAnts
+	global tAll
 	if bAllAnts == True:
 		bAllAnts = False
+		tAll.set("Update one ant")
 	else:
 		bAllAnts = True
+		tAll.set("Update all ants")
 	return
 
 # Create 2D grid which has a surface of 10N: 10 * sqrt(N) by 10 * sqrt(N)
@@ -171,11 +179,19 @@ canvas.pack(expand=YES, fill=BOTH)
 
 # Draw buttons
 bSpeed = Button(root, text="Speed", command=setSpeed)
-bSpeed.pack()
-bStop = Button(root, text="Pause", command=setPause)
+bSpeed.pack(side=LEFT)
+tSpeed = StringVar()
+tSpeed.set("Speed: "+str(1/speed))
+lSpeed = Label(root, textvariable=tSpeed)
+lSpeed.pack(side=LEFT)
+tPlay = StringVar()
+tPlay.set("Play")
+bStop = Button(root, textvariable=tPlay, command=setPause)
 bStop.pack()
-bStop = Button(root, text="All vs one random", command=setAllAnts)
-bStop.pack()
+tAll = StringVar()
+tAll.set("Update all ants")
+bAll = Button(root, textvariable=tAll, command=setAllAnts)
+bAll.pack()
 
 while 1:
 	if bLoop:
