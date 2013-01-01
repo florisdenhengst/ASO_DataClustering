@@ -1,5 +1,7 @@
 import math
 import random
+import time
+from Tkinter import *
 
 datasetSize = 1200		# Determine later
 dropThreshold = 0.5		# Determine later
@@ -8,6 +10,10 @@ pickupThreshold = 0.5	# Determine later
 pickupConst = 1
 dropConst = 1
 alpha = 1
+
+bLoop = True
+bAllAnts = True
+speed = 0.03
 
 # Classes
 class Ant:
@@ -73,6 +79,18 @@ def itemOnLocation(ant):
 			return True
 	return False
 
+def iterateAnt(ant):
+	if ant.load is not None:
+		if dropChance(ant) > dropThreshold:
+			dropItem(ant)
+	elif itemOnLocation(ant):
+		if pickupChance(ant) > pickupThreshold:
+			pickupItem(ant)
+	
+	# Move ant in random direction
+	moveAnt(ant)
+	return
+
 def moveAnt(ant):
 	chance = random.random()
 	if chance > 0.75:
@@ -83,6 +101,49 @@ def moveAnt(ant):
 		ant.y += 1
 	else:
 		ant.y -= 1
+	if ant.x > gridUpperXBound:
+		ant.x = 0
+	if ant.x < gridLowerXBound:
+		ant.x = gridUpperXBound
+	if ant.y > gridUpperYBound:
+		ant.y = 0
+	if ant.y < gridLowerYBound:
+		ant.y = gridUpperYBound
+	return
+
+def drawAnts():
+	canvas.delete("all")
+	for ant in antColony:
+		canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
+	canvas.update()
+	return
+
+def setSpeed():
+	global speed
+	if speed == 0.0:
+		speed = 0.03
+	elif speed == 0.03:
+		speed = 0.1
+	elif speed == 0.1:
+		speed = 1
+	else:
+		speed = 0.0
+	return
+	
+def setPause():
+	global bLoop
+	if bLoop == True:
+		bLoop = False
+	else:
+		bLoop = True
+	return
+	
+def setAllAnts():
+	global bAllAnts
+	if bAllAnts == True:
+		bAllAnts = False
+	else:
+		bAllAnts = True
 	return
 
 # Create 2D grid which has a surface of 10N: 10 * sqrt(N) by 10 * sqrt(N)
@@ -102,18 +163,34 @@ createAnts(datasetSize/10)
 dataItems = []
 loadDataItems()
 
+# Draw main canvas
+root = Tk()
+root.geometry(str(gridUpperXBound)+"x"+str(gridUpperYBound)+"+100+100")
+canvas = Canvas(root, bg='#40DE58')
+canvas.pack(expand=YES, fill=BOTH)
+
+# Draw buttons
+bSpeed = Button(root, text="Speed", command=setSpeed)
+bSpeed.pack()
+bStop = Button(root, text="Pause", command=setPause)
+bStop.pack()
+bStop = Button(root, text="All vs one random", command=setAllAnts)
+bStop.pack()
 
 while 1:
-	# Select a random ant
-	ant = random.choice(antColony)
-	
-	if ant.load is not None:
-		if dropChance(ant) > dropThreshold:
-			dropItem(ant)
-	elif itemOnLocation(ant):
-		if pickupChance(ant) > pickupThreshold:
-			pickupItem(ant)
-	
-	# Move ant in random direction
-	moveAnt(ant)
+	if bLoop:
+		if bAllAnts:
+			for ant in antColony:
+				iterateAnt(ant)
+		else:
+			# Select a random ant
+			ant = random.choice(antColony)
+			iterateAnt(ant)
+		
+		drawAnts()
+		time.sleep(speed)
+	else:
+		canvas.update()
+
+root.mainloop()
 
