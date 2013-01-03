@@ -13,7 +13,9 @@ alpha = 1
 
 bLoop = False
 bAllAnts = True
-speed = 0.03
+speed = 0.1
+modSpeed = 1
+generation = 0
 
 # Classes
 class Ant:
@@ -120,38 +122,43 @@ def drawAnts():
 
 def setSpeed():
 	global speed
-	global tSpeed
-	if speed == 0.0001:
-		speed = 0.03
-	elif speed == 0.03:
-		speed = 0.1
-	elif speed == 0.1:
-		speed = 1
-	else:
-		speed = 0.0001
-	tSpeed.set("Speed: "+str(1/speed))
+	global sSpeed
+	
+	speed = speed/10
+	if speed < 0.0001:
+		speed = 1.0
+	sSpeed.set(str(1/speed)+" ant (colony) updates/s")
+	return
+	
+def setModSpeed():
+	global modSpeed
+	global sModSpeed
+	modSpeed *= 10
+	if modSpeed > 1000:
+		modSpeed = 1
+	sModSpeed.set(value="Canvas updated after "+str(modSpeed)+" generations")
 	return
 	
 def setPause():
 	global bLoop
-	global tPlay
+	global sPlay
 	if bLoop == True:
 		bLoop = False
-		tPlay.set("Play")
+		sPlay.set("Play")
 	else:
 		bLoop = True
-		tPlay.set("Pause")
+		sPlay.set("Pause")
 	return
 	
 def setAllAnts():
 	global bAllAnts
-	global tAll
+	global sAll
 	if bAllAnts == True:
 		bAllAnts = False
-		tAll.set("Update one ant")
+		sAll.set("Update one ant")
 	else:
 		bAllAnts = True
-		tAll.set("Update all ants")
+		sAll.set("Update all ants")
 	return
 
 # Create 2D grid which has a surface of 10N: 10 * sqrt(N) by 10 * sqrt(N)
@@ -173,40 +180,58 @@ loadDataItems()
 
 # Draw main canvas
 root = Tk()
-root.geometry(str(gridUpperXBound)+"x"+str(gridUpperYBound)+"+100+100")
-canvas = Canvas(root, bg='#40DE58')
-canvas.pack(expand=YES, fill=BOTH)
+root.title("Incredibly realistic ant colony")
+root.geometry(str(gridUpperXBound)+"x"+str(gridUpperYBound+150)+"+100+100")
+canvas = Canvas(root, width=str(gridUpperXBound), height=str(gridUpperYBound), bg='#40DE58')
+canvas.grid(row=0, column=0, columnspan=2)
 
 # Draw buttons
-bSpeed = Button(root, text="Speed", command=setSpeed)
-bSpeed.pack(side=LEFT)
-tSpeed = StringVar()
-tSpeed.set("Speed: "+str(1/speed))
-lSpeed = Label(root, textvariable=tSpeed)
-lSpeed.pack(side=LEFT)
-tPlay = StringVar()
-tPlay.set("Play")
-bStop = Button(root, textvariable=tPlay, command=setPause)
-bStop.pack()
-tAll = StringVar()
-tAll.set("Update all ants")
-bAll = Button(root, textvariable=tAll, command=setAllAnts)
-bAll.pack()
+sPlay = StringVar(value="Play")
+butPlay = Button(root, textvariable=sPlay, command=setPause)
+butPlay.grid(row=1, column=0, sticky=E)
+
+sGeneration = StringVar(value="Generation = "+str(generation))
+lGeneration = Label(root, textvariable=sGeneration)
+lGeneration.grid(row=1, column=1, sticky=W)
+
+butSpeed = Button(root, text="Speed", command=setSpeed)
+butSpeed.grid(row=2, column=0, sticky=E)
+sSpeed = StringVar(value=str(1/speed)+" ant (colony) updates/s")
+lSpeed = Label(root, textvariable=sSpeed)
+lSpeed.grid(row=2, column=1, sticky=W)
+
+butModSpeed = Button(root, text="Fast forward", command=setModSpeed)
+butModSpeed.grid(row=3, column=0, sticky=E)
+sModSpeed = StringVar(value="Canvas updated after "+str(modSpeed)+" generations")
+lModSpeed = Label(root, textvariable=sModSpeed)
+lModSpeed.grid(row=3, column=1, sticky=W)
+
+sAll = StringVar(value="Update all ants")
+butAll = Button(root, textvariable=sAll, command=setAllAnts)
+butAll.grid(row=4, column=0, columnspan=2)
 
 while 1:
+	# Do one generation if not paused
 	if bLoop:
+		generation += 1
+		sGeneration.set("Generation = "+str(generation))
 		if bAllAnts:
+			# Iterate all ants
 			for ant in antColony:
 				iterateAnt(ant)
 		else:
-			# Select a random ant
+			# Select a random ant and iterate
 			ant = random.choice(antColony)
 			iterateAnt(ant)
 		
-		drawAnts()
+		# Every modSpeed-steps the canvas is drawn(for FastForwarding)
+		if (generation%modSpeed == 0):
+			drawAnts()
+		# Sleep 'speed'-time units to make the speed variable
 		time.sleep(speed)
-	else:
-		canvas.update()
+	
+	# Update the canvas each loop to make sure the buttons still work
+	canvas.update()
 
 root.mainloop()
 
