@@ -4,7 +4,7 @@ import re
 import os.path
 
 # Open ratings file
-inputfile = open(os.path.abspath('hotelratings2.txt'), 'r')
+inputfile = open(os.path.abspath('hotelratings.txt'), 'r')
 inputtext = inputfile.read()
 
 # Use '/' as delimiter
