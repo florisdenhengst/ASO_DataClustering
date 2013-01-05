@@ -29,13 +29,13 @@ for i in range(1, len(delinput)):
         if delinput[i] in hotellist:
             hotelID = hotellist.index(delinput[i])
             reviewcount[hotelID] += 1
-            print "Hotel was al bekend op index " + str(hotelID)
+            print "Hotel " + delinput[i] + " was al bekend op index " + str(hotelID)
 
         else:
             hotellist.append(delinput[i])
             hotelID = len(hotellist) - 1
             reviewcount.append(1) # Index corresponds with hotellist index, first review (= 1) 
-            print "Hotel toegevoegd op index " + str(hotelID)
+            print "Hotel " + delinput[i] + " toegevoegd op index " + str(hotelID)
 
     if i%5 == 2: # = review
         buf = StringIO.StringIO()
