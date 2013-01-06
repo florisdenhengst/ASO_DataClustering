@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:28:14CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:28:14CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:28:14CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:28:14CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:28:14CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:28:14CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">mooi</wf>
+    <wf wid="w_2" para="1" sent="1">verzorgd</wf>
+    <wf wid="w_3" para="1" sent="1">hotel</wf>
+    <wf wid="w_4" para="1" sent="1">met</wf>
+    <wf wid="w_5" para="1" sent="1">goed</wf>
+    <wf wid="w_6" para="1" sent="1">ontbijt</wf>
+    <wf wid="w_7" para="1" sent="1">en</wf>
+    <wf wid="w_8" para="1" sent="1">zeer</wf>
+    <wf wid="w_9" para="1" sent="1">goed</wf>
+    <wf wid="w_10" para="1" sent="1">diner</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="mooi" type="open" pos="G">
+      <span>
+        <target id="w_1"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_2" lemma="verzorgd" type="open" pos="G">
+      <span>
+        <target id="w_2"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_3" lemma="hotel" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="met" type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="goed" type="open" pos="G">
+      <span>
+        <target id="w_5"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_6" lemma="ontbijt" type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="en" type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma="zeer" type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+      <sentiment sentiment_modifier="intensifier" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_9" lemma="goed" type="open" pos="G">
+      <span>
+        <target id="w_9"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_10" lemma="diner" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+  </terms>
+  <properties>
+    <property type="restaurant" pid="p_1">
+      <span>
+        <target id="t_6"/>
+      </span>
+      <span>
+        <target id="t_10"/>
+      </span>
+    </property>
+  </properties>
+  <opinions>
+    <opinion oid="o_1">
+      <opinion_target>
+        <span>
+          <target id="t_3"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="2">
+        <span>
+          <target id="t_1"/>
+          <target id="t_2"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_2">
+      <opinion_target>
+        <span>
+          <target id="t_6"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_5"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_3">
+      <opinion_target>
+        <span>
+          <target id="t_10"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="2">
+        <span>
+          <target id="t_9"/>
+          <target id="t_8"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+  </opinions>
+</KAF>

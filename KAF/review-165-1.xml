@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:36:20CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:36:20CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:36:20CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:36:20CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:36:20CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:36:20CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">Te</wf>
+    <wf wid="w_2" para="1" sent="1">weinig</wf>
+    <wf wid="w_3" para="1" sent="1">voor</wf>
+    <wf wid="w_4" para="1" sent="1">te</wf>
+    <wf wid="w_5" para="1" sent="1">veel</wf>
+    <wf wid="w_6" para="1" sent="1">geld</wf>
+    <wf wid="w_7" para="1" sent="1">.</wf>
+    <wf wid="w_8" para="1" sent="2">Ligging</wf>
+    <wf wid="w_9" para="1" sent="2">.</wf>
+    <wf wid="w_10" para="1" sent="3">Geen</wf>
+    <wf wid="w_11" para="1" sent="3">airco</wf>
+    <wf wid="w_12" para="1" sent="3">.</wf>
+    <wf wid="w_13" para="1" sent="4">vergane</wf>
+    <wf wid="w_14" para="1" sent="4">glorie</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="te" type="open">
+      <span>
+        <target id="w_1"/>
+      </span>
+    </term>
+    <term tid="t_2" lemma="weinig" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_3" lemma="voor" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="te" type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="veel" type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term tid="t_6" lemma="geld" type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="." type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma="ligging" type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+    </term>
+    <term tid="t_9" lemma="." type="open">
+      <span>
+        <target id="w_9"/>
+      </span>
+    </term>
+    <term tid="t_10" lemma="geen" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_11" lemma="airco" type="open">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+    <term tid="t_12" lemma="." type="open">
+      <span>
+        <target id="w_12"/>
+      </span>
+    </term>
+    <term tid="t_13" lemma="vergane" type="open">
+      <span>
+        <target id="w_13"/>
+      </span>
+    </term>
+    <term tid="t_14" lemma="glorie" type="open">
+      <span>
+        <target id="w_14"/>
+      </span>
+    </term>
+  </terms>
+  <properties>
+    <property type="value_for_money" pid="p_1">
+      <span>
+        <target id="t_6"/>
+      </span>
+    </property>
+    <property type="location" pid="p_2">
+      <span>
+        <target id="t_8"/>
+      </span>
+    </property>
+    <property type="room" pid="p_3">
+      <span>
+        <target id="t_11"/>
+      </span>
+    </property>
+  </properties>
+</KAF>

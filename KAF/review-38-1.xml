@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:29:55CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:29:55CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:29:55CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:29:55CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:29:55CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:29:55CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">gesitueerd</wf>
+    <wf wid="w_2" para="1" sent="1">in</wf>
+    <wf wid="w_3" para="1" sent="1">centrum</wf>
+    <wf wid="w_4" para="1" sent="1">Amsterdam</wf>
+    <wf wid="w_5" para="1" sent="1">,</wf>
+    <wf wid="w_6" para="1" sent="1">stijlvollle</wf>
+    <wf wid="w_7" para="1" sent="1">inrichting</wf>
+    <wf wid="w_8" para="1" sent="1">,</wf>
+    <wf wid="w_9" para="1" sent="1">vriendelijke</wf>
+    <wf wid="w_10" para="1" sent="1">medewerkers</wf>
+    <wf wid="w_11" para="1" sent="1">.</wf>
+    <wf wid="w_12" para="1" sent="2">er</wf>
+    <wf wid="w_13" para="1" sent="2">moet</wf>
+    <wf wid="w_14" para="1" sent="2">beter</wf>
+    <wf wid="w_15" para="1" sent="2">schoongemaakt</wf>
+    <wf wid="w_16" para="1" sent="2">worden</wf>
+    <wf wid="w_17" para="1" sent="2">,</wf>
+    <wf wid="w_18" para="1" sent="2">te</wf>
+    <wf wid="w_19" para="1" sent="2">stoffig</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="gesitueerd" type="open">
+      <span>
+        <target id="w_1"/>
+      </span>
+    </term>
+    <term tid="t_2" lemma="in" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="centrum" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="amsterdam" type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="," type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term tid="t_6" lemma="stijlvollle" type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="inrichting" type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma="," type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+    </term>
+    <term tid="t_9" lemma="vriendelijke" type="open">
+      <span>
+        <target id="w_9"/>
+      </span>
+    </term>
+    <term tid="t_10" lemma="medewerkers" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+    <term tid="t_11" lemma="." type="open">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+    <term tid="t_12" lemma="er" type="open">
+      <span>
+        <target id="w_12"/>
+      </span>
+    </term>
+    <term tid="t_13" lemma="moet" type="open">
+      <span>
+        <target id="w_13"/>
+      </span>
+    </term>
+    <term tid="t_14" lemma="beter" type="open">
+      <span>
+        <target id="w_14"/>
+      </span>
+    </term>
+    <term tid="t_15" lemma="schoongemaakt" type="open">
+      <span>
+        <target id="w_15"/>
+      </span>
+    </term>
+    <term tid="t_16" lemma="worden" type="open">
+      <span>
+        <target id="w_16"/>
+      </span>
+    </term>
+    <term tid="t_17" lemma="," type="open">
+      <span>
+        <target id="w_17"/>
+      </span>
+    </term>
+    <term tid="t_18" lemma="te" type="open">
+      <span>
+        <target id="w_18"/>
+      </span>
+    </term>
+    <term tid="t_19" lemma="stoffig" type="open" pos="G">
+      <span>
+        <target id="w_19"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+  </terms>
+  <entities>
+    <entity type="LOC" eid="e_1">
+      <span>
+        <target id="t_4"/>
+      </span>
+    </entity>
+  </entities>
+  <properties>
+    <property type="cleanliness" pid="p_1">
+      <span>
+        <target id="t_19"/>
+      </span>
+    </property>
+    <property type="location" pid="p_2">
+      <span>
+        <target id="t_3"/>
+      </span>
+    </property>
+  </properties>
+  <opinions>
+    <opinion oid="o_1">
+      <opinion_target>
+        <span>
+          <target id="t_15"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-1">
+        <span>
+          <target id="t_19"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+  </opinions>
+</KAF>
