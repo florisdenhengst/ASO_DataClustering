@@ -36,9 +36,10 @@ class DataItem:
 		self.data = data
 		
 class Subject(object):
-    def __init__(self, sub=None, polarity=None):
-        self.sub = sub
-        self.polarity = polarity
+    def __init__(self, sub=None, polarity=None, counter=1): # counter = aantal opinions over dat subject
+		self.sub = sub
+		self.polarity = polarity
+		self.counter = counter
 
 # Chance an ant picks up the item on its position: ( Kp / ( Kp + F(i) )^2
 def pickupChance(ant):
@@ -80,7 +81,7 @@ def similarity(ant, dataItem):
 				# TODO: worden hier items dubbel geteld?
 				if iItem.sub == jItem.sub:
 					overlap = True
-					diff += abs(int(iItem.polarity) - int(jItem.polarity))
+					diff += abs(float(iItem.polarity) - float(jItem.polarity))
 	
 	if overlap:
 		return min(1, diff/10)
@@ -285,10 +286,16 @@ while hotel < 500:
 						for subject in subjects:
 							if subject.sub == pSubject:
 								unique = False
-						
+								subjectIndex = subjects.index(subject)
 						if unique == True:
 							subjects.append(Subject(pSubject, polarity))
-		
+						#	print "New unique property " + pSubject + " at hotel " + str(hotel)
+						else:
+							oldSum = float(subjects[subjectIndex].polarity) * subjects[subjectIndex].counter
+							subjects[subjectIndex].counter += 1
+							newSum = oldSum + float(polarity)
+							subjects[subjectIndex].polarity = str(round(newSum / subjects[subjectIndex].counter, 2))
+						#	print "Property " + pSubject + " at hotel " + str(hotel) + " updated in review " + str(review) + " to " + str(subjects[subjectIndex].polarity)
 		
 		review += 1
 	else:
