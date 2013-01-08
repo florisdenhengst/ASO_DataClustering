@@ -20,6 +20,7 @@ alpha = 100
 
 bLoop = False
 bAllAnts = True
+bAntsVisible = True
 speed = 0.1
 modSpeed = 1
 generation = 0
@@ -151,10 +152,25 @@ def moveAnt(ant):
 		ant.load.y = ant.y
 	return
 
+def setAntVisibility():
+	global bAntsVisible
+	global sAntsVisible
+
+	if bAntsVisible == True:
+		bAntsVisible = False
+		sAntsVisible.set(value="Toggle visible ants")
+	else:
+		bAntsVisible = True
+		sAntsVisible.set(value="Toggle invisible ants")
+	return
+
 def drawAnts():
 	canvas.delete("all")
-	for ant in antColony:
-		canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
+	
+	if bAntsVisible:
+		for ant in antColony:
+			canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
+	
 	for dataItem in dataItems:
 		canvas.create_oval(dataItem.x-3, dataItem.y-3, dataItem.x+3, dataItem.y+3, fill="#fff")
 	canvas.update()
@@ -195,10 +211,10 @@ def setAllAnts():
 	global sAll
 	if bAllAnts == True:
 		bAllAnts = False
-		sAll.set("Update one ant")
+		sAll.set("Toggle simultaneous ant updates")
 	else:
 		bAllAnts = True
-		sAll.set("Update all ants")
+		sAll.set("Toggle single ant updates")
 	return
 
 # Create 2D grid which has a surface of 10N: 10 * sqrt(N) by 10 * sqrt(N)
@@ -245,9 +261,13 @@ sModSpeed = StringVar(value="Canvas updated after "+str(modSpeed)+" generations"
 lModSpeed = Label(root, textvariable=sModSpeed)
 lModSpeed.grid(row=3, column=1, sticky=W)
 
-sAll = StringVar(value="Update all ants")
+sAll = StringVar(value="Toggle single ant updates")
 butAll = Button(root, textvariable=sAll, command=setAllAnts)
 butAll.grid(row=4, column=0, columnspan=2)
+
+sAntsVisible = StringVar(value="Toggle invisible ants")
+butAntsVisible = Button(root, textvariable=sAntsVisible, command=setAntVisibility)
+butAntsVisible.grid(row=5, column=0, columnspan=2)
 
 ### Process data ###
 hotel = 1
@@ -304,6 +324,7 @@ while hotel < 500:
 					    found = True
 			if not found:
 				subjects.append(Subject(otherSubject, 0))
+		
 		dataItems.append(DataItem(random.randint(0, gridUpperXBound), random.randint(0, gridUpperYBound), subjects))
 		subjects = []
 		hotel += 1
