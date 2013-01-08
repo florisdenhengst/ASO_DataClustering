@@ -10,7 +10,9 @@ from xml.dom.minidom import parseString
 
 datasetSize = 1200		# Determine later
 dropThreshold = 0.01		# Determine later
-pickupThreshold = 0.5	# Determine later
+pickupThreshold = 0.5		# Determine later
+
+allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", "value_for_money", "swimming_pool", "location", "bathroom", "parking", "noise", "cleanliness", "breakfast", "internet"]
 
 pickupConst = 1
 dropConst = 1
@@ -26,7 +28,7 @@ generation = 0
 class Ant:
 	def __init__(self, x, y, load = None):
 		self.x = x
-		self.y = y
+	    	self.y = y
 		self.load = load
 
 class DataItem:
@@ -71,31 +73,29 @@ def inLocalArea(ant, dataItem):
 		return True 
 	return False
 
-# Distance between to items
+# Distance between two items
 def similarity(ant, dataItem):
-	diff = 0
-	overlap = False
+#	overlap = False
 	if ant.load:
+		diff = 0
 		for iItem in ant.load.data:
 			for jItem in dataItem.data:
-				# TODO: worden hier items dubbel geteld?
+				# TODO: worden hier items dubbel geteld? Nee hoor
 				if iItem.sub == jItem.sub:
-					overlap = True
-					diff += abs(float(iItem.polarity) - float(jItem.polarity))
-	
-	if overlap:
+				#	overlap = True
+					diff += math.pow(float(iItem.polarity) - float(jItem.polarity), 2)
+		
+			diff = math.sqrt(diff)
+
+#	if overlap:
 		return min(1, diff/10)
-	else:
-		return 1
+#	else:
+	return 1
 
 # Creates ants and places them randomly on grid
 def createAnts(nrOfAnts):
 	for i in range(1, nrOfAnts):
 		antColony.append(Ant(random.randint(0, gridUpperXBound), random.randint(0, gridUpperYBound)))
-	return
-
-def loadDataItems():
-	# TODO, depends on data
 	return
 
 def itemOnLocation(ant):
@@ -216,7 +216,6 @@ createAnts(datasetSize/10)
 
 # Load data and place data items randomly in the grid
 dataItems = []
-loadDataItems()
 
 # Draw main canvas
 root = Tk()
@@ -289,16 +288,22 @@ while hotel < 500:
 								subjectIndex = subjects.index(subject)
 						if unique == True:
 							subjects.append(Subject(pSubject, polarity))
-						#	print "New unique property " + pSubject + " at hotel " + str(hotel)
 						else:
 							oldSum = float(subjects[subjectIndex].polarity) * subjects[subjectIndex].counter
 							subjects[subjectIndex].counter += 1
 							newSum = oldSum + float(polarity)
 							subjects[subjectIndex].polarity = str(round(newSum / subjects[subjectIndex].counter, 2))
-						#	print "Property " + pSubject + " at hotel " + str(hotel) + " updated in review " + str(review) + " to " + str(subjects[subjectIndex].polarity)
 		
 		review += 1
 	else:
+		# Add zero values for all other subjects
+		for otherSubject in allSubjects:
+			found = False
+			for foundsubject in subjects:
+				    if otherSubject == foundsubject.sub:
+					    found = True
+			if not found:
+				subjects.append(Subject(otherSubject, 0))
 		dataItems.append(DataItem(random.randint(0, gridUpperXBound), random.randint(0, gridUpperYBound), subjects))
 		subjects = []
 		hotel += 1
