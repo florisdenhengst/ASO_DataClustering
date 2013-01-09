@@ -8,7 +8,7 @@ import sys
 from Tkinter import *
 from xml.dom.minidom import parseString
 
-datasetSize = 1200		# Determine later
+datasetSize = 469 			# 1200 earlier. # hotels
 dropThreshold = 0.01		# Determine later
 pickupThreshold = 0.5		# Determine later
 
@@ -16,7 +16,7 @@ allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", 
 
 pickupConst = 1
 dropConst = 1
-alpha = 100
+alpha = 1
 
 bLoop = False
 bAllAnts = True
@@ -169,10 +169,12 @@ def drawAnts():
 	
 	if bAntsVisible:
 		for ant in antColony:
-			canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
+#			canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
+			canvas.create_line(ant.x, ant.y, ant.x+1, ant.y+1, fill="#805555")
 	
 	for dataItem in dataItems:
-		canvas.create_oval(dataItem.x-3, dataItem.y-3, dataItem.x+3, dataItem.y+3, fill="#fff")
+#		canvas.create_oval(dataItem.x-3, dataItem.y-3, dataItem.x+3, dataItem.y+3, fill="#fff")
+		canvas.create_line(dataItem.x, dataItem.y, dataItem.x+1, dataItem.y+1, fill="#000")
 	canvas.update()
 	return
 
@@ -236,7 +238,7 @@ dataItems = []
 # Draw main canvas
 root = Tk()
 root.title("Incredibly realistic ant colony")
-root.geometry(str(gridUpperXBound)+"x"+str(gridUpperYBound+150)+"+100+100")
+root.geometry(str(gridUpperXBound+150)+"x"+str(gridUpperYBound+150)+"+100+100")
 canvas = Canvas(root, width=str(gridUpperXBound), height=str(gridUpperYBound), bg='#40DE58')
 canvas.grid(row=0, column=0, columnspan=2)
 
@@ -272,8 +274,6 @@ butAntsVisible.grid(row=5, column=0, columnspan=2)
 ### Process data ###
 hotel = 1
 review = 1
-subjects = []
-
 subjects = []
 
 print "Loading data..."
@@ -353,6 +353,3 @@ while 1:
 	
 	# Update the canvas each loop to make sure the buttons still work
 	canvas.update()
-
-root.mainloop()
-
