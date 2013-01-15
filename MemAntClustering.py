@@ -1,6 +1,7 @@
 import math
 import random
 import time
+import datetime
 import urllib2
 import os.path
 import re
@@ -8,7 +9,7 @@ import sys
 from Tkinter import *
 from xml.dom.minidom import parseString
 
-datasetSize = 1000 			# 1200 earlier. # hotels
+datasetSize = 469 			# 1200 earlier. # hotels
 dropThreshold = 0.001		# Determine later
 pickupThreshold = 0.5		# Determine later
 
@@ -20,7 +21,7 @@ allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", 
 
 pickupConst = 1
 dropConst = 1
-alpha = 0.1
+alpha = 5
 
 bLoop = False
 bAllAnts = True
@@ -38,6 +39,7 @@ class Ant:
 		self.load = load
 		self.memory = []
 		self.goal = None
+		self.dropLoadMode = False
 
 class DataItem:
 	def __init__(self, x, y, data = []):
@@ -69,7 +71,8 @@ def dropChance(ant):
 		else:
 			return 1
 	else:
-		if len(ant.memory) == 0 or memorySize == 0:
+		#TODO:Only check memory if all memory-items are filled
+		if len(ant.memory) == 0:
 			locSim = localSimilarity(ant)
 			if locSim < dropConst:
 				#print str(2 * locSim)
@@ -79,7 +82,7 @@ def dropChance(ant):
 			bestSimilarity = 0
 			for dataItem in ant.memory:
 				sim = similarity(dataItem, ant.load)
-				if sim > bestSimilarity and sim > dropConst:
+				if sim > bestSimilarity:
 					bestSimilarity = sim
 					ant.goal = dataItem
 					#print "Goal is set!"
@@ -129,16 +132,16 @@ def itemOnLocation(ant):
 			return item
 	return False
 
-def itemOnCoord(xCoord, yCoord):
+def antOnEmptyLocation(ant):
     for item in dataItems:
-	if item.x == xCoord and item.y == yCoord:
-	    return True
+		if item is not ant.load and item.x == ant.x and item.y == ant.y:
+			return True
     return False
 
 def iterateAnt(ant):
 	if ant.load is not None:
 		d = dropChance(ant)
-		if d > dropThreshold:
+		if d > dropThreshold or ant.dropLoadMode:
 			dropItem(ant)
 	else:
 		item = itemOnLocation(ant)
@@ -151,14 +154,18 @@ def iterateAnt(ant):
 	
 def dropItem(ant):
 	#print "Dropped item."
-	ant.memory.insert(0, ant.load)
-	if len(ant.memory) > memorySize:
-		ant.memory.pop(memorySize)
-	
-	ant.load.x = ant.x
-	ant.load.y = ant.y
-	ant.load = None
-	ant.goal = None
+	if antOnEmptyLocation(ant):
+		ant.dropLoadMode = True
+	else:
+		ant.memory.insert(0, ant.load)
+		if len(ant.memory) > memorySize:
+			ant.memory.pop(memorySize)
+		
+		ant.load.x = ant.x
+		ant.load.y = ant.y
+		ant.load = None
+		ant.goal = None
+		ant.dropLoadMode = False
 	return
 	
 def pickupItem(ant, item):
@@ -168,19 +175,15 @@ def pickupItem(ant, item):
 
 # DEZE AANPASSEN
 def moveAnt(ant):
-	if ant.goal is not None:
+	if ant.goal is not None and not ant.dropLoadMode:
 		if ant.x < ant.goal.x:
 			dummyX = ant.x + 1
-			dummyY = ant.y
 		else: 
 			dummyX = ant.x - 1
-			dummyY = ant.y
 		if ant.y < ant.goal.y:
 			dummyY = ant.y + 1
-			dummyX = ant.x
 		else: 
 			dummyY = ant.y - 1
-			dummyX = ant.x
 	
 	else:
 		chance = random.random()
@@ -200,7 +203,7 @@ def moveAnt(ant):
 	if ant.load is None:
 		ant.x = dummyX
 		ant.y = dummyY
-	elif not itemOnCoord(dummyX, dummyY):
+	else:
 		ant.x = dummyX
 		ant.y = dummyY
 		ant.load.x = dummyX
@@ -231,6 +234,8 @@ def exportResult():
     f.write("pickupConst: " + str(pickupConst) + "\n")
     f.write("All ants updated at the same time: " + str(bAllAnts) + "\n")
     f.write("Generations used: " + str(generation) + "\n")
+    f.write("Memory size: " + str(memorySize) + "\n")
+    f.write("Cooling down: " + str(bCooling) + "\n")
     f.write("---------------------------------------\n")
     f.write("Syntax: HotelID / X / Y\n\n")
     
@@ -328,7 +333,7 @@ dataItems = []
 # Draw main canvas
 root = Tk()
 root.title("Incredibly realistic ant colony")
-root.geometry(str(gridUpperXBound+150)+"x"+str(gridUpperYBound+150)+"+100+100")
+root.geometry(str(gridUpperXBound+150)+"x"+str(gridUpperYBound+250)+"+100+100")
 canvas = Canvas(root, width=str(gridUpperXBound), height=str(gridUpperYBound), bg='#40DE58')
 canvas.grid(row=0, column=0, columnspan=2)
 
@@ -380,7 +385,7 @@ subjects = []
 
 print "Loading data..."
  
-while hotel < 500:
+while hotel < 469:
 	filename = 'KAF/review-'+str(hotel)+"-"+str(review)+'.xml'
 	if os.path.exists(filename):
 		
