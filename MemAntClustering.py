@@ -171,12 +171,16 @@ def moveAnt(ant):
 	if ant.goal is not None:
 		if ant.x < ant.goal.x:
 			dummyX = ant.x + 1
+			dummyY = ant.y
 		else: 
 			dummyX = ant.x - 1
+			dummyY = ant.y
 		if ant.y < ant.goal.y:
-			dummyX = ant.y + 1
+			dummyY = ant.y + 1
+			dummyX = ant.x
 		else: 
 			dummyY = ant.y - 1
+			dummyX = ant.x
 	
 	else:
 		chance = random.random()
