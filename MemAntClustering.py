@@ -160,36 +160,41 @@ def pickupItem(ant, item):
 	ant.load = item
 	return
 
+# DEZE AANPASSEN
 def moveAnt(ant):
 	if ant.goal is not None:
 		if ant.x < ant.goal.x:
-			ant.x += 1
-		else: ant.x -= 1
+			dummyX = ant.x + 1
+		else: 
+			dummyX = ant.x - 1
 		if ant.y < ant.goal.y:
-			ant.y += 1
-		else: ant.y -= 1
+			dummyX = ant.y + 1
+		else: 
+			dummyY = ant.y - 1
+	
 	else:
 		chance = random.random()
 		if chance > 0.75:
-			ant.x += math.ceil(random.random() * 3)
+			dummyX = min(ant.x + math.ceil(random.random() * 3), gridUpperXBound)
+			dummyY = ant.y
 		elif chance > 0.5:
-			ant.x -= math.ceil(random.random() * 3)
+			dummyX = max(ant.x - math.ceil(random.random() * 3), gridLowerXBound)
+			dummyY = ant.y
 		elif chance > 0.25:
-			ant.y += math.ceil(random.random() * 3)
+			dummyY = min(ant.y + math.ceil(random.random() * 3), gridUpperYBound)
+			dummyX = ant.x
 		else:
-			ant.y -= math.ceil(random.random() * 3)
-	
-	if ant.x > gridUpperXBound:
-		ant.x = gridUpperXBound
-	if ant.x < gridLowerXBound:
-		ant.x = gridLowerXBound
-	if ant.y > gridUpperYBound:
-		ant.y = gridUpperYBound
-	if ant.y < gridLowerYBound:
-		ant.y = gridLowerYBound
-	if ant.load is not None:
-		ant.load.x = ant.x
-		ant.load.y = ant.y
+			dummyY = max(ant.y - math.ceil(random.random() * 3), gridLowerYBound)
+			dummyX = ant.x
+
+	if ant.load is None:
+		ant.x = dummyX
+		ant.y = dummyY
+	elif not itemOnCoord(dummyX, dummyY):
+		ant.x = dummyX
+		ant.y = dummyY
+		ant.load.x = dummyX
+		ant.load.y = dummyY
 	return
 
 def setAntVisibility():
@@ -203,6 +208,26 @@ def setAntVisibility():
 		bAntsVisible = True
 		sAntsVisible.set(value="Toggle invisible ants")
 	return
+
+def exportResult():
+    tijd = datetime.datetime.now()
+    f = open(os.path.dirname(os.path.abspath("AntClustering.py")) + "/results/" + tijd.strftime("%Y-%m-%d--%Hu%M") + ".txt", 'w')
+    f.write("Result export, created at " + tijd.strftime("%Y-%m-%d %H:%M:%S") + "\n")
+    f.write("Dataset size: " + str(datasetSize) + "\n")
+    f.write("Alpha: " + str(alpha) + "\n")
+    f.write("dropThreshold: " + str(dropThreshold) + "\n")
+    f.write("pickupThreshold: " + str(pickupThreshold) + "\n")
+    f.write("dropConst: " + str(dropConst) + "\n")
+    f.write("pickupConst: " + str(pickupConst) + "\n")
+    f.write("All ants updated at the same time: " + str(bAllAnts) + "\n")
+    f.write("Generations used: " + str(generation) + "\n")
+    f.write("---------------------------------------\n")
+    f.write("Syntax: HotelID / X / Y\n\n")
+    
+    for dataItem in dataItems:
+	f.write(str(dataItem.hotel) + "/" + str(dataItem.x) + "/" + str(dataItem.y) + "\n")
+
+    return
 
 def drawAnts():
 	sCooling.set(value=str(bCooling)+", value: "+str(pickupThreshold))
@@ -332,6 +357,11 @@ butCoolingDown.grid(row=6, column=0, sticky=E)
 sCooling = StringVar(value="True, value: "+str(pickupThreshold))
 lCoolingDown = Label(root, textvariable=sCooling)
 lCoolingDown.grid(row=6, column=1, sticky=W)
+
+sExportResult = StringVar(value="Export results to file")
+butExportResult = Button(root, textvariable=sExportResult, command=exportResult)
+butExportResult.grid(row=7, column=0, columnspan=2)
+
 
 ### Process data ###
 hotel = 1
