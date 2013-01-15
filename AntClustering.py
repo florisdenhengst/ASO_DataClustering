@@ -19,7 +19,7 @@ allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", 
 
 pickupConst = 1
 dropConst = 1
-alpha = 1
+alpha = 10
 
 bLoop = False
 bAllAnts = True
@@ -50,6 +50,7 @@ class Subject(object):
 
 # Chance an ant picks up the item on its position: ( Kp / ( Kp + F(i) )^2
 def pickupChance(ant):
+	print "locSim = " + str(localSimilarity(ant)) + " en pickupChance = " + str(math.pow((pickupConst / (pickupConst + localSimilarity(ant))), 2))
 	return math.pow((pickupConst / (pickupConst + localSimilarity(ant))), 2)
 	
 # Chance an ant drops an item on its current position:
@@ -69,12 +70,15 @@ def localSimilarity(ant):
 	    dataItemAnt = itemOnLocation(ant)
 	
 	locality = 1 / math.pow(localDist * 2, 2)
+#	print "locality = " + str(locality)
 	locSim = 0;
 	for dataItem in dataItems:
 		if inLocalArea(ant, dataItem):
-			locSim += (1 - similarity(dataItemAnt, dataItem) / alpha)
+			locSim += (1 - (similarity(dataItemAnt, dataItem) / alpha))
 	
+#	print "locSim = " + str(locSim)
 	result = locality * locSim;
+#	print "localSimilarity = " + str(result)
 	return max(result, 0)
 
 # Determine if one ant is in local area of the other
@@ -255,7 +259,7 @@ gridUpperXBound = int(10 * math.sqrt(datasetSize))
 gridUpperYBound = int(10 * math.sqrt(datasetSize))
 
 # Define local area size
-localDist = 20			#Determine later
+localDist = 3			#Determine later
 
 #Create N/10 number of ants and place randomly in grid
 antColony = []
