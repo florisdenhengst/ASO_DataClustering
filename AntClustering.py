@@ -5,10 +5,13 @@ import urllib2
 import os.path
 import re
 import sys
+import time
+import datetime
 from Tkinter import *
 from xml.dom.minidom import parseString
 
-datasetSize = 1000 			# 1200 earlier. # hotels
+nHotels = 469			# Later nog effe een en dezelfde var van maken
+datasetSize = nHotels		# 1200 earlier
 dropThreshold = 0.01		# Determine later
 pickupThreshold = 0.5		# Determine later
 
@@ -37,9 +40,10 @@ class Ant:
 		self.load = load
 
 class DataItem:
-	def __init__(self, x, y, data = []):
+	def __init__(self, x, y, hotel, data = []):
 		self.x = x
 		self.y = y
+		self.hotel = hotel
 		self.data = data
 		
 class Subject(object):
@@ -105,6 +109,12 @@ def itemOnLocation(ant):
 			return item
 	return False
 
+def itemOnCoord(xCoord, yCoord):
+    for item in dataItems:
+	if item.x == xCoord and item.y == yCoord:
+	    return True
+    return False
+
 def iterateAnt(ant):
 	if ant.load is not None:
 		d = dropChance(ant)
@@ -130,27 +140,29 @@ def pickupItem(ant, item):
 	return
 
 def moveAnt(ant):
-	chance = random.random()
-	if chance > 0.75:
-		ant.x += 1
-	elif chance > 0.5:
-		ant.x -= 1
-	elif chance > 0.25:
-		ant.y += 1
-	else:
-		ant.y -= 1
-	if ant.x > gridUpperXBound:
-		ant.x = gridUpperXBound
-	if ant.x < gridLowerXBound:
-		ant.x = gridLowerXBound
-	if ant.y > gridUpperYBound:
-		ant.y = gridUpperYBound
-	if ant.y < gridLowerYBound:
-		ant.y = gridLowerYBound
-	if ant.load is not None:
-		ant.load.x = ant.x
-		ant.load.y = ant.y
-	return
+    chance = random.random()
+    if chance > 0.75:
+        dummyX = min(ant.x + 1, gridUpperXBound)
+	dummyY = ant.y
+    elif chance > 0.5:
+        dummyX = max(ant.x - 1, gridLowerXBound)
+	dummyY = ant.y
+    elif chance > 0.25:
+        dummyY = min(ant.y + 1, gridUpperYBound)
+	dummyX = ant.x
+    else:
+        dummyY = max(ant.y - 1, gridLowerYBound)
+	dummyX = ant.x
+    
+    if ant.load is None:
+	ant.x = dummyX
+	ant.y = dummyY
+    elif not itemOnCoord(dummyX, dummyY):
+	ant.x = dummyX
+	ant.y = dummyY
+	ant.load.x = dummyX
+        ant.load.y = dummyY
+    return
 
 def setAntVisibility():
 	global bAntsVisible
@@ -163,6 +175,27 @@ def setAntVisibility():
 		bAntsVisible = True
 		sAntsVisible.set(value="Toggle invisible ants")
 	return
+
+def exportResult():
+    tijd = datetime.datetime.now()
+    f = open(os.path.dirname(os.path.abspath("AntClustering.py")) + "/results/" + tijd.strftime("%Y-%m-%d--%Hu%M") + ".txt", 'w')
+    f.write("Result export, created at " + tijd.strftime("%Y-%m-%d %H:%M:%S") + "\n")
+    f.write("Dataset size: " + str(datasetSize) + "\n")
+    f.write("Alpha: " + str(alpha) + "\n")
+    f.write("dropThreshold: " + str(dropThreshold) + "\n")
+    f.write("pickupThreshold: " + str(pickupThreshold) + "\n")
+    f.write("dropConst: " + str(dropConst) + "\n")
+    f.write("pickupConst: " + str(pickupConst) + "\n")
+    f.write("All ants updated at the same time: " + str(bAllAnts) + "\n")
+    f.write("Generations used: " + str(generation) + "\n")
+    f.write("---------------------------------------\n")
+    f.write("Syntax: HotelID / X / Y\n\n")
+    
+    for dataItem in dataItems:
+	f.write(str(dataItem.hotel) + "/" + str(dataItem.x) + "/" + str(dataItem.y) + "\n")
+
+    return
+
 
 def drawAnts():
 	sCooling.set(value=str(bCooling)+", value: "+str(pickupThreshold))
@@ -249,7 +282,7 @@ dataItems = []
 # Draw main canvas
 root = Tk()
 root.title("Incredibly realistic ant colony")
-root.geometry(str(gridUpperXBound+150)+"x"+str(gridUpperYBound+150)+"+100+100")
+root.geometry(str(gridUpperXBound+150)+"x"+str(gridUpperYBound+250)+"+100+100")
 canvas = Canvas(root, width=str(gridUpperXBound), height=str(gridUpperYBound), bg='#40DE58')
 canvas.grid(row=0, column=0, columnspan=2)
 
@@ -289,6 +322,11 @@ sCooling = StringVar(value="True, value: "+str(pickupThreshold))
 lCoolingDown = Label(root, textvariable=sCooling)
 lCoolingDown.grid(row=6, column=1, sticky=W)
 
+sExportResult = StringVar(value="Export results to file")
+butExportResult = Button(root, textvariable=sExportResult, command=exportResult)
+butExportResult.grid(row=7, column=0, columnspan=2)
+
+
 ### Process data ###
 hotel = 1
 review = 1
@@ -296,7 +334,7 @@ subjects = []
 
 print "Loading data..."
  
-while hotel < 500:
+while hotel < nHotels:
 	filename = 'KAF/review-'+str(hotel)+"-"+str(review)+'.xml'
 	if os.path.exists(filename):
 		
@@ -343,7 +381,7 @@ while hotel < 500:
 			if not found:
 				subjects.append(Subject(otherSubject, 0))
 		
-		dataItems.append(DataItem(random.randint(0, gridUpperXBound), random.randint(0, gridUpperYBound), subjects))
+		dataItems.append(DataItem(random.randint(0, gridUpperXBound), random.randint(0, gridUpperYBound), hotel, subjects))
 		subjects = []
 		hotel += 1
 		review = 1
