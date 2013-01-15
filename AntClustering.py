@@ -8,9 +8,13 @@ import sys
 from Tkinter import *
 from xml.dom.minidom import parseString
 
-datasetSize = 469 			# 1200 earlier. # hotels
+datasetSize = 1000 			# 1200 earlier. # hotels
 dropThreshold = 0.01		# Determine later
 pickupThreshold = 0.5		# Determine later
+
+bCooling = False
+modCooling = 10000
+rateCooling = 0.98
 
 allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", "value_for_money", "swimming_pool", "location", "bathroom", "parking", "noise", "cleanliness", "breakfast", "internet"]
 
@@ -29,7 +33,7 @@ generation = 0
 class Ant:
 	def __init__(self, x, y, load = None):
 		self.x = x
-	    	self.y = y
+		self.y = y
 		self.load = load
 
 class DataItem:
@@ -80,10 +84,10 @@ def inLocalArea(ant, dataItem):
 	return False
 
 # Distance between two items
-def similarity(ant, dataItem):
+def similarity(dataItem1, dataItem2):
 	diff = 0
-	for iItem in ant.load.data:
-	    for jItem in dataItem.data:
+	for iItem in dataItem1.data:
+	    for jItem in dataItem2.data:
 		if iItem.sub == jItem.sub:
 		    diff += math.pow(float(iItem.polarity) - float(jItem.polarity), 2)
 	diff = math.sqrt(diff)
@@ -161,16 +165,17 @@ def setAntVisibility():
 	return
 
 def drawAnts():
+	sCooling.set(value=str(bCooling)+", value: "+str(pickupThreshold))
 	canvas.delete("all")
 	
 	if bAntsVisible:
 		for ant in antColony:
-#			canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
-			canvas.create_line(ant.x, ant.y, ant.x+1, ant.y+1, fill="#805555")
+			canvas.create_oval(ant.x-1, ant.y-1, ant.x+1, ant.y+1, fill="#805555")
+			#canvas.create_line(ant.x, ant.y, ant.x+1, ant.y+1, fill="#805555")
 	
 	for dataItem in dataItems:
-#		canvas.create_oval(dataItem.x-3, dataItem.y-3, dataItem.x+3, dataItem.y+3, fill="#fff")
-		canvas.create_line(dataItem.x, dataItem.y, dataItem.x+1, dataItem.y+1, fill="#000")
+		canvas.create_oval(dataItem.x-1, dataItem.y-1, dataItem.x+1, dataItem.y+1, fill="#fff")
+		#canvas.create_line(dataItem.x, dataItem.y, dataItem.x+1, dataItem.y+1, fill="#000")
 	canvas.update()
 	return
 
@@ -213,6 +218,16 @@ def setAllAnts():
 	else:
 		bAllAnts = True
 		sAll.set("Toggle single ant updates")
+	return
+	
+def setCoolingDown():
+	global bCooling
+	if bCooling:
+		bCooling = False
+		sCooling.set("False, value: "+str(pickupThreshold))
+	else:
+		bCooling = True
+		sCooling.set("True, value: "+str(pickupThreshold))
 	return
 
 # Create 2D grid which has a surface of 10N: 10 * sqrt(N) by 10 * sqrt(N)
@@ -266,6 +281,13 @@ butAll.grid(row=4, column=0, columnspan=2)
 sAntsVisible = StringVar(value="Toggle invisible ants")
 butAntsVisible = Button(root, textvariable=sAntsVisible, command=setAntVisibility)
 butAntsVisible.grid(row=5, column=0, columnspan=2)
+
+sCoolingDown = StringVar(value="Cooling down")
+butCoolingDown = Button(root, textvariable=sCoolingDown, command=setCoolingDown)
+butCoolingDown.grid(row=6, column=0, sticky=E)
+sCooling = StringVar(value="True, value: "+str(pickupThreshold))
+lCoolingDown = Label(root, textvariable=sCooling)
+lCoolingDown.grid(row=6, column=1, sticky=W)
 
 ### Process data ###
 hotel = 1
@@ -331,6 +353,9 @@ while 1:
 	# Do one generation if not paused
 	if bLoop:
 		generation += 1
+		if bCooling and generation%modCooling == 0:
+			pickupThreshold *= rateCooling
+				
 		sGeneration.set("Generation = "+str(generation))
 		if bAllAnts:
 			# Iterate all ants
