@@ -8,7 +8,7 @@ import sys
 from Tkinter import *
 from xml.dom.minidom import parseString
 
-datasetSize = 1200		# Determine later
+datasetSize = 469 			# 1200 earlier. # hotels
 dropThreshold = 0.01		# Determine later
 pickupThreshold = 0.5		# Determine later
 
@@ -16,10 +16,11 @@ allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", 
 
 pickupConst = 1
 dropConst = 1
-alpha = 100
+alpha = 1
 
 bLoop = False
 bAllAnts = True
+bAntsVisible = True
 speed = 0.1
 modSpeed = 1
 generation = 0
@@ -147,12 +148,29 @@ def moveAnt(ant):
 		ant.load.y = ant.y
 	return
 
+def setAntVisibility():
+	global bAntsVisible
+	global sAntsVisible
+
+	if bAntsVisible == True:
+		bAntsVisible = False
+		sAntsVisible.set(value="Toggle visible ants")
+	else:
+		bAntsVisible = True
+		sAntsVisible.set(value="Toggle invisible ants")
+	return
+
 def drawAnts():
 	canvas.delete("all")
-	for ant in antColony:
-		canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
+	
+	if bAntsVisible:
+		for ant in antColony:
+#			canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
+			canvas.create_line(ant.x, ant.y, ant.x+1, ant.y+1, fill="#805555")
+	
 	for dataItem in dataItems:
-		canvas.create_oval(dataItem.x-3, dataItem.y-3, dataItem.x+3, dataItem.y+3, fill="#fff")
+#		canvas.create_oval(dataItem.x-3, dataItem.y-3, dataItem.x+3, dataItem.y+3, fill="#fff")
+		canvas.create_line(dataItem.x, dataItem.y, dataItem.x+1, dataItem.y+1, fill="#000")
 	canvas.update()
 	return
 
@@ -191,10 +209,10 @@ def setAllAnts():
 	global sAll
 	if bAllAnts == True:
 		bAllAnts = False
-		sAll.set("Update one ant")
+		sAll.set("Toggle simultaneous ant updates")
 	else:
 		bAllAnts = True
-		sAll.set("Update all ants")
+		sAll.set("Toggle single ant updates")
 	return
 
 # Create 2D grid which has a surface of 10N: 10 * sqrt(N) by 10 * sqrt(N)
@@ -216,7 +234,7 @@ dataItems = []
 # Draw main canvas
 root = Tk()
 root.title("Incredibly realistic ant colony")
-root.geometry(str(gridUpperXBound)+"x"+str(gridUpperYBound+150)+"+100+100")
+root.geometry(str(gridUpperXBound+150)+"x"+str(gridUpperYBound+150)+"+100+100")
 canvas = Canvas(root, width=str(gridUpperXBound), height=str(gridUpperYBound), bg='#40DE58')
 canvas.grid(row=0, column=0, columnspan=2)
 
@@ -241,15 +259,17 @@ sModSpeed = StringVar(value="Canvas updated after "+str(modSpeed)+" generations"
 lModSpeed = Label(root, textvariable=sModSpeed)
 lModSpeed.grid(row=3, column=1, sticky=W)
 
-sAll = StringVar(value="Update all ants")
+sAll = StringVar(value="Toggle single ant updates")
 butAll = Button(root, textvariable=sAll, command=setAllAnts)
 butAll.grid(row=4, column=0, columnspan=2)
+
+sAntsVisible = StringVar(value="Toggle invisible ants")
+butAntsVisible = Button(root, textvariable=sAntsVisible, command=setAntVisibility)
+butAntsVisible.grid(row=5, column=0, columnspan=2)
 
 ### Process data ###
 hotel = 1
 review = 1
-subjects = []
-
 subjects = []
 
 print "Loading data..."
@@ -300,6 +320,7 @@ while hotel < 500:
 					    found = True
 			if not found:
 				subjects.append(Subject(otherSubject, 0))
+		
 		dataItems.append(DataItem(random.randint(0, gridUpperXBound), random.randint(0, gridUpperYBound), subjects))
 		subjects = []
 		hotel += 1
@@ -328,6 +349,3 @@ while 1:
 	
 	# Update the canvas each loop to make sure the buttons still work
 	canvas.update()
-
-root.mainloop()
-
