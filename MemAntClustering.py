@@ -129,6 +129,12 @@ def itemOnLocation(ant):
 			return item
 	return False
 
+def itemOnCoord(xCoord, yCoord):
+    for item in dataItems:
+	if item.x == xCoord and item.y == yCoord:
+	    return True
+    return False
+
 def iterateAnt(ant):
 	if ant.load is not None:
 		d = dropChance(ant)
