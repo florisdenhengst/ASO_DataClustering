@@ -42,9 +42,10 @@ class Ant:
 		self.dropLoadMode = False
 
 class DataItem:
-	def __init__(self, x, y, data = []):
+	def __init__(self, x, y, hotel, data = []):
 		self.x = x
 		self.y = y
+		self.hotel = hotel
 		self.data = data
 		
 class Subject(object):
@@ -72,7 +73,7 @@ def dropChance(ant):
 			return 1
 	else:
 		#TODO:Only check memory if all memory-items are filled
-		if len(ant.memory) == 0:
+		if len(ant.memory) < memorySize:
 			locSim = localSimilarity(ant)
 			if locSim < dropConst:
 				#print str(2 * locSim)
@@ -157,9 +158,12 @@ def dropItem(ant):
 	if antOnEmptyLocation(ant):
 		ant.dropLoadMode = True
 	else:
-		ant.memory.insert(0, ant.load)
-		if len(ant.memory) > memorySize:
-			ant.memory.pop(memorySize)
+		if dataItemInMemory(ant):
+			updateItemInMemory(ant)
+		else:
+			ant.memory.insert(0, ant.load)
+			if len(ant.memory) > memorySize:
+				ant.memory.pop(memorySize)
 		
 		ant.load.x = ant.x
 		ant.load.y = ant.y
@@ -168,6 +172,24 @@ def dropItem(ant):
 		ant.dropLoadMode = False
 	return
 	
+def dataItemInMemory(ant):
+	for item in ant.memory:
+		if ant.load.hotel == item.hotel:
+#			print "item al in memory"
+			return True
+#	print "item niet in memory"
+	return False
+
+def updateItemInMemory(ant):
+	for item in ant.memory:
+		if ant.load.hotel == item.hotel:
+			item.x = ant.load.x
+			item.y = ant.load.y
+#			print "memory item bijgewerkt"
+			return
+	print "oeps, error!"
+	return
+
 def pickupItem(ant, item):
 	#print "Picked up."
 	ant.load = item
@@ -385,7 +407,7 @@ subjects = []
 
 print "Loading data..."
  
-while hotel < 469:
+while hotel < datasetSize:
 	filename = 'KAF/review-'+str(hotel)+"-"+str(review)+'.xml'
 	if os.path.exists(filename):
 		
@@ -432,7 +454,7 @@ while hotel < 469:
 			if not found:
 				subjects.append(Subject(otherSubject, 0))
 		
-		dataItems.append(DataItem(random.randint(0, gridUpperXBound), random.randint(0, gridUpperYBound), subjects))
+		dataItems.append(DataItem(random.randint(0, gridUpperXBound), random.randint(0, gridUpperYBound), hotel, subjects))
 		subjects = []
 		hotel += 1
 		review = 1
