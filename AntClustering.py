@@ -105,6 +105,12 @@ def itemOnLocation(ant):
 			return item
 	return False
 
+def itemOnCoord(xCoord, yCoord):
+    for item in dataItems:
+	if item.x == xCoord and item.y == yCoord:
+	    return True
+    return False
+
 def iterateAnt(ant):
 	if ant.load is not None:
 		d = dropChance(ant)
@@ -130,27 +136,29 @@ def pickupItem(ant, item):
 	return
 
 def moveAnt(ant):
-	chance = random.random()
-	if chance > 0.75:
-		ant.x += 1
-	elif chance > 0.5:
-		ant.x -= 1
-	elif chance > 0.25:
-		ant.y += 1
-	else:
-		ant.y -= 1
-	if ant.x > gridUpperXBound:
-		ant.x = gridUpperXBound
-	if ant.x < gridLowerXBound:
-		ant.x = gridLowerXBound
-	if ant.y > gridUpperYBound:
-		ant.y = gridUpperYBound
-	if ant.y < gridLowerYBound:
-		ant.y = gridLowerYBound
-	if ant.load is not None:
-		ant.load.x = ant.x
-		ant.load.y = ant.y
-	return
+    chance = random.random()
+    if chance > 0.75:
+        dummyX = min(ant.x + 1, gridUpperXBound)
+	dummyY = ant.y
+    elif chance > 0.5:
+        dummyX = max(ant.x - 1, gridLowerXBound)
+	dummyY = ant.y
+    elif chance > 0.25:
+        dummyY = min(ant.y + 1, gridUpperYBound)
+	dummyX = ant.x
+    else:
+        dummyY = max(ant.y - 1, gridLowerYBound)
+	dummyX = ant.x
+    
+    if ant.load is None:
+	ant.x = dummyX
+	ant.y = dummyY
+    elif not itemOnCoord(dummyX, dummyY):
+	ant.x = dummyX
+	ant.y = dummyY
+	ant.load.x = dummyX
+        ant.load.y = dummyY
+    return
 
 def setAntVisibility():
 	global bAntsVisible
