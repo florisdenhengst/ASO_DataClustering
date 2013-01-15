@@ -58,11 +58,16 @@ def dropChance(ant):
 
 # Calculate local similarity
 def localSimilarity(ant):
+	if ant.load is not None:
+	    dataItemAnt = ant.load
+	else:
+	    dataItemAnt = itemOnLocation(ant)
+	
 	locality = 1 / math.pow(localDist * 2, 2)
 	locSim = 0;
 	for dataItem in dataItems:
 		if inLocalArea(ant, dataItem):
-			locSim += (1 - similarity(ant, dataItem) / alpha)
+			locSim += (1 - similarity(dataItemAnt, dataItem) / alpha)
 	
 	result = locality * locSim;
 	return max(result, 0)
@@ -75,22 +80,13 @@ def inLocalArea(ant, dataItem):
 
 # Distance between two items
 def similarity(ant, dataItem):
-#	overlap = False
-	if ant.load:
-		diff = 0
-		for iItem in ant.load.data:
-			for jItem in dataItem.data:
-				# TODO: worden hier items dubbel geteld? Nee hoor
-				if iItem.sub == jItem.sub:
-				#	overlap = True
-					diff += math.pow(float(iItem.polarity) - float(jItem.polarity), 2)
-		
-			diff = math.sqrt(diff)
-
-#	if overlap:
-		return min(1, diff/10)
-#	else:
-	return 1
+	diff = 0
+	for iItem in ant.load.data:
+	    for jItem in dataItem.data:
+		if iItem.sub == jItem.sub:
+		    diff += math.pow(float(iItem.polarity) - float(jItem.polarity), 2)
+	diff = math.sqrt(diff)
+	return diff
 
 # Creates ants and places them randomly on grid
 def createAnts(nrOfAnts):
@@ -139,13 +135,13 @@ def moveAnt(ant):
 	else:
 		ant.y -= 1
 	if ant.x > gridUpperXBound:
-		ant.x = 0
-	if ant.x < gridLowerXBound:
 		ant.x = gridUpperXBound
+	if ant.x < gridLowerXBound:
+		ant.x = gridLowerXBound
 	if ant.y > gridUpperYBound:
-		ant.y = 0
-	if ant.y < gridLowerYBound:
 		ant.y = gridUpperYBound
+	if ant.y < gridLowerYBound:
+		ant.y = gridLowerYBound
 	if ant.load is not None:
 		ant.load.x = ant.x
 		ant.load.y = ant.y
