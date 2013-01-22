@@ -16,6 +16,7 @@ pickupThreshold = 0.02		# Determine later
 bCooling = False
 modCooling = 10000
 rateCooling = 0.98
+maxGeneration = 30000		# Export results after this amount of generations
 
 allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", "value_for_money", "swimming_pool", "location", "bathroom", "parking", "noise", "cleanliness", "breakfast", "internet"]
 
@@ -106,7 +107,7 @@ def localSimilarity(ant):
 		
 	result = locality * locSim;
 	
-	print "Locsim: " + str(locSim) + ", result: " + str(result)
+	# print "Locsim: " + str(locSim) + ", result: " + str(result)
 	return max(result, 0)
 
 # Determine if one ant is in local area of the other
@@ -488,3 +489,8 @@ while 1:
 	
 	# Update the canvas each loop to make sure the buttons still work
 	canvas.update()
+
+	if generation == maxGeneration:
+		exportResult()
+		raw_input("Done! Press any key to exit")
+		quit()
