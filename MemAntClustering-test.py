@@ -10,7 +10,7 @@ from Tkinter import *
 from xml.dom.minidom import parseString
 
 datasetSize = 469 			# 1200 earlier. # hotels
-dropThreshold = 0.001		# Determine later
+dropThreshold = 0.0001		# Determine later
 pickupThreshold = 0.5		# Determine later
 
 bCooling = False
@@ -83,18 +83,22 @@ def dropChance(ant):
 			locSim = localSimilarity(ant)
 			if locSim < dropConst:
 				return 2 * locSim
+			else:
+				return 1
 	else:
 		#TODO:Only check memory if all memory-items are filled
 		if len(ant.memory) < memorySize:
 			locSim = localSimilarity(ant)
 			if locSim < dropConst:
 				return 2 * locSim
+			else:
+				return 1
 		else:
 			bestDataItem = None
 			bestSimilarity = 0
 			for dataItem in ant.memory:
 				sim = similarity(dataItem, ant.load)
-				if sim > bestSimilarity:
+				if sim > bestSimilarity and dataItem != ant.load:
 					bestSimilarity = sim
 					ant.goal = dataItem
 	return 0
@@ -173,7 +177,6 @@ def dropItem(ant):
 	#print "Dropped item."
 	if antOnEmptyLocation(ant):
 		ant.dropLoadMode = True
-		print "Ant drop load mode true"
 	else:
 		if dataItemInMemory(ant):
 			updateItemInMemory(ant)
@@ -525,7 +528,7 @@ while 1:
 	# Do one generation if not paused
 	if bLoop:
 		generation += 1
-		print generation
+		#print generation
 		if bCooling and generation%modCooling == 0:
 			pickupThreshold *= rateCooling
 		

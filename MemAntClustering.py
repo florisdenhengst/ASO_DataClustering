@@ -10,7 +10,7 @@ from Tkinter import *
 from xml.dom.minidom import parseString
 
 datasetSize = 469 			# 1200 earlier. # hotels
-dropThreshold = 0.001		# Determine later
+dropThreshold = 0.02		# Determine later
 pickupThreshold = 0.5		# Determine later
 
 bCooling = False
@@ -21,7 +21,7 @@ allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", 
 
 pickupConst = 1
 dropConst = 1
-alpha = 5
+alpha = 10
 
 bLoop = False
 bAllAnts = True
@@ -29,7 +29,7 @@ bAntsVisible = True
 speed = 0.1
 modSpeed = 1
 generation = 0
-memorySize = 6
+memorySize = 5
 
 # Classes
 class Ant:
@@ -78,13 +78,15 @@ def dropChance(ant):
 			if locSim < dropConst:
 				#print str(2 * locSim)
 				return 2 * locSim
+			else:
+				return 1
 		else:
 			bestDataItem = None
-			bestSimilarity = 0
+			bestDist = 10000
 			for dataItem in ant.memory:
-				sim = similarity(dataItem, ant.load)
-				if sim > bestSimilarity:
-					bestSimilarity = sim
+				dist = distance(dataItem, ant.load)
+				if dist < bestDist:
+					bestDist = dist
 					ant.goal = dataItem
 					#print "Goal is set!"
 	return 0
@@ -97,12 +99,14 @@ def localSimilarity(ant):
 	    dataItemAnt = itemOnLocation(ant)
 	
 	locality = 1 / math.pow(localDist * 2, 2)
-	locSim = 0;
+	locSim = 0
 	for dataItem in dataItems:
-		if inLocalArea(ant, dataItem):
-			locSim += (1 - similarity(dataItemAnt, dataItem) / alpha)
-	
+		if inLocalArea(ant, dataItem) and not dataItem is dataItemAnt:
+			locSim += (1 - (distance(dataItemAnt, dataItem) / alpha))
+		
 	result = locality * locSim;
+	
+	print "Locsim: " + str(locSim) + ", result: " + str(result)
 	return max(result, 0)
 
 # Determine if one ant is in local area of the other
@@ -112,13 +116,14 @@ def inLocalArea(ant, dataItem):
 	return False
 
 # Distance between two items
-def similarity(dataItem1, dataItem2):
+def distance(dataItem1, dataItem2):
 	diff = 0
 	for iItem in dataItem1.data:
 	    for jItem in dataItem2.data:
-		if iItem.sub == jItem.sub:
-		    diff += math.pow(float(iItem.polarity) - float(jItem.polarity), 2)
+			if iItem.sub == jItem.sub:
+				diff += math.pow(float(iItem.polarity) - float(jItem.polarity), 2)
 	diff = math.sqrt(diff)
+	#print diff
 	return diff
 
 # Creates ants and places them randomly on grid
@@ -187,7 +192,6 @@ def updateItemInMemory(ant):
 			item.y = ant.load.y
 #			print "memory item bijgewerkt"
 			return
-	print "oeps, error!"
 	return
 
 def pickupItem(ant, item):
