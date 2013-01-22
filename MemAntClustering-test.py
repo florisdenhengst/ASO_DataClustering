@@ -554,5 +554,5 @@ while 1:
 
 	if generation == maxGeneration:
 		exportResult()
-		raw_input("Done! Press any key to exit")
+		raw_input("Done! Press ENTER to exit")
 		quit()
