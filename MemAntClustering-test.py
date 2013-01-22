@@ -10,18 +10,18 @@ from Tkinter import *
 from xml.dom.minidom import parseString
 
 datasetSize = 469 			# 1200 earlier. # hotels
-dropThreshold = 0.0001		# Determine later
-pickupThreshold = 0.5		# Determine later
+dropThreshold = 0.03		# Determine later
+pickupThreshold = 0.02		# Determine later
 
 bCooling = False
-modCooling = 10000
-rateCooling = 0.98
+modCooling = 1000
+rateCooling = 0.95
 
 allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", "value_for_money", "swimming_pool", "location", "bathroom", "parking", "noise", "cleanliness", "breakfast", "internet"]
 
-pickupConst = 1
+pickupConst = 0.01
 dropConst = 1
-alpha = 100
+alpha = 10
 
 bLoop = False
 bAllAnts = True
@@ -68,8 +68,10 @@ class Subject(object):
 # Chance an ant picks up the item on its position: ( Kp / ( Kp + F(i) )^2
 def pickupChance(ant):
 	if ant.goal is not None:
+		print False
 		return 0
 	else:
+		print "pickup: " + str(math.pow((pickupConst / (pickupConst + localSimilarity(ant))), 2))
 		return math.pow((pickupConst / (pickupConst + localSimilarity(ant))), 2)
 	
 # Chance an ant drops an item on its current position:
@@ -77,11 +79,13 @@ def pickupChance(ant):
 #	else				1
 def dropChance(ant):
 	if ant.goal is not None:
+		#print "Is not none"
 		if not inLocalArea(ant, ant.goal):
 			return 0
 		else:
 			locSim = localSimilarity(ant)
 			if locSim < dropConst:
+				#print str(2 * locSim)
 				return 2 * locSim
 			else:
 				return 1
@@ -90,17 +94,19 @@ def dropChance(ant):
 		if len(ant.memory) < memorySize:
 			locSim = localSimilarity(ant)
 			if locSim < dropConst:
+				#print str(2 * locSim)
 				return 2 * locSim
 			else:
 				return 1
 		else:
 			bestDataItem = None
-			bestSimilarity = 0
+			bestDist = 1000000
 			for dataItem in ant.memory:
-				sim = similarity(dataItem, ant.load)
-				if sim > bestSimilarity and dataItem != ant.load:
-					bestSimilarity = sim
+				dist = distance(dataItem, ant.load)
+				if dist < bestDist and ant.load != dataItem:
+					bestDist = dist
 					ant.goal = dataItem
+					#print "Goal is set!"
 	return 0
 
 # Calculate local similarity
@@ -111,12 +117,13 @@ def localSimilarity(ant):
 	    dataItemAnt = itemOnLocation(ant)
 	
 	locality = 1 / math.pow(localDist * 2, 2)
-	locSim = 0;
+	locSim = 0
 	for dataItem in dataItems:
-		if inLocalArea(ant, dataItem):
-			locSim += (similarity(dataItemAnt, dataItem) / alpha)
+		if inLocalArea(ant, dataItem) and not dataItem is dataItemAnt:
+			locSim += (1 - (distance(dataItemAnt, dataItem) / alpha))
 	
-	result = locality * locSim;
+	result = locality * locSim
+	#print result
 	return max(result, 0)
 
 # Determine if one ant is in local area of the other
@@ -126,20 +133,15 @@ def inLocalArea(ant, dataItem):
 	return False
 
 # Distance between two items
-def similarity(dataItem1, dataItem2):
+def distance(dataItem1, dataItem2):
 	diff = 0
-	n = 0
 	for iItem in dataItem1.data:
-		for jItem in dataItem2.data:
+	    for jItem in dataItem2.data:
 			if iItem.sub == jItem.sub:
-	#			print str(iItem.polarity) + " - " + str(jItem.polarity) + " = " + str(abs(float(iItem.polarity) - float(jItem.polarity)))
-				diff += min(abs(float(iItem.polarity) - float(jItem.polarity)), 1)
-				n += 1
-	if n == 0:
-		return 0
-	else:
-		#print (1 - (diff / 14))
-		return (1 - (diff / n))
+				diff += math.pow(float(iItem.polarity) - float(jItem.polarity), 2)
+	diff = math.sqrt(diff)
+	#print diff
+	return diff
 
 # Creates ants and places them randomly on grid
 def createAnts(nrOfAnts):
@@ -207,10 +209,10 @@ def updateItemInMemory(ant):
 			item.y = ant.load.y
 #			print "memory item bijgewerkt"
 			return
-	print "oeps, error!"
 	return
 
 def pickupItem(ant, item):
+	#print "Picked up."
 	ant.load = item
 	return
 
@@ -218,13 +220,13 @@ def pickupItem(ant, item):
 def moveAnt(ant):
 	if ant.goal is not None and not ant.dropLoadMode:
 		if ant.x < ant.goal.x:
-			dummyX = ant.x + 1
+			dummyX = min(ant.x + 1, gridUpperXBound)
 		else: 
-			dummyX = ant.x - 1
+			dummyX = max(ant.x - 1, gridLowerXBound)
 		if ant.y < ant.goal.y:
-			dummyY = ant.y + 1
+			dummyY = min(ant.y + 1, gridUpperYBound)
 		else: 
-			dummyY = ant.y - 1
+			dummyY = max(ant.y - 1, gridLowerYBound)
 	
 	else:
 		chance = random.random()
@@ -278,7 +280,7 @@ def exportResult():
     f.write("Memory size: " + str(memorySize) + "\n")
     f.write("Cooling down: " + str(bCooling) + "\n")
     f.write("---------------------------------------\n")
-    f.write("Syntax: HotelID/X /Y\n\n")
+    f.write("Syntax: HotelID / X / Y\n\n")
     
     for dataItem in dataItems:
 	f.write(str(dataItem.hotel) + "/" + str(dataItem.x) + "/" + str(dataItem.y) + "\n")
@@ -291,7 +293,7 @@ def drawAnts():
 	
 	canvas.delete("all")
 	if bAntsVisible:
-		for ant in antColony:			
+		for ant in antColony:
 			if ant.goal is not None:
 				canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
 			else:
@@ -470,7 +472,7 @@ while hotel < datasetSize:
 			oTarget = oTargetTag.attributes['id'].value
 			oExpressionTag = opinion.getElementsByTagName('opinion_expression')[0]
 			polarity = float(oExpressionTag.attributes['strength'].value)
-						
+			
 			for prop in properties:
 				pTargetTags = prop.getElementsByTagName('target')
 				for pTargetTag in pTargetTags:
@@ -528,7 +530,6 @@ while 1:
 	# Do one generation if not paused
 	if bLoop:
 		generation += 1
-		#print generation
 		if bCooling and generation%modCooling == 0:
 			pickupThreshold *= rateCooling
 		

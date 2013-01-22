@@ -11,7 +11,7 @@ from xml.dom.minidom import parseString
 
 datasetSize = 469 			# 1200 earlier. # hotels
 dropThreshold = 0.02		# Determine later
-pickupThreshold = 0.5		# Determine later
+pickupThreshold = 0.02		# Determine later
 
 bCooling = False
 modCooling = 10000
@@ -19,7 +19,7 @@ rateCooling = 0.98
 
 allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", "value_for_money", "swimming_pool", "location", "bathroom", "parking", "noise", "cleanliness", "breakfast", "internet"]
 
-pickupConst = 1
+pickupConst = 0.01
 dropConst = 1
 alpha = 10
 
