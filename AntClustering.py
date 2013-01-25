@@ -18,7 +18,6 @@ dropConst = 1
 localDist = 5
 alpha = 10
 generation = 0
-maxGeneration = 30000		# Export results after this amount of generations
 
 # GUI constants
 bLoop = False
@@ -501,8 +500,3 @@ while 1:
 	
 	# Update the canvas each loop to make sure the buttons still work
 	canvas.update()
-
-	if generation == maxGeneration:
-		exportResult()
-		raw_input("Done! Press ENTER to exit")
-		quit()
