@@ -9,28 +9,31 @@ import sys
 from Tkinter import *
 from xml.dom.minidom import parseString
 
-datasetSize = 469 			# 1200 earlier. # hotels
-dropThreshold = 0.02		# Determine later
-pickupThreshold = 0.02		# Determine later
-
-bCooling = False
-modCooling = 10000
-rateCooling = 0.98
+# Constants
+datasetSize = 469
+pickupThreshold = 0.005
+pickupConst = 0.01
+dropThreshold = 0.02
+dropConst = 1
+localDist = 5
+alpha = 10
+generation = 0
 maxGeneration = 30000		# Export results after this amount of generations
 
-allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", "value_for_money", "swimming_pool", "location", "bathroom", "parking", "noise", "cleanliness", "breakfast", "internet"]
-
-pickupConst = 0.01
-dropConst = 1
-alpha = 10
-
+# GUI constants
 bLoop = False
-bAllAnts = True
 bAntsVisible = True
 speed = 0.1
 modSpeed = 1
-generation = 0
-memorySize = 5
+
+# Variables to test with
+bAllAnts = True
+memorySize = 6
+stepSize = 3
+
+bCooling = False
+modCooling = 1000
+rateCooling = 1.03
 
 # Classes
 class Ant:
@@ -50,7 +53,8 @@ class DataItem:
 		self.data = data
 		
 class Subject(object):
-    def __init__(self, sub=None, polarity=None, counter=1): # counter = aantal opinions over dat subject
+	# counter = amount of opinions on subject 
+    def __init__(self, sub=None, polarity=None, counter=1): 
 		self.sub = sub
 		self.polarity = polarity
 		self.counter = counter
@@ -62,26 +66,24 @@ def pickupChance(ant):
 	else:
 		return math.pow((pickupConst / (pickupConst + localSimilarity(ant))), 2)
 	
-# Chance an ant drops an item on its current position:
-#	if F(i) < Kd	2F(i)
-#	else				1
+# Chance an ant drops an item on its current position
 def dropChance(ant):
+	# Drop item if it's in the local area of the ant's goal, else: keep it
 	if ant.goal is not None:
-		#print "Is not none"
-		if not inLocalArea(ant, ant.goal):
-			return 0
-		else:
+		if inLocalArea(ant, ant.goal):
 			return 1
+		else:
+			return 0
 	else:
-		#TODO:Only check memory if all memory-items are filled
-		if len(ant.memory) < memorySize:
+		# If memory is not full yet: standard procedure (see paper)
+		if (len(ant.memory) < memorySize) or memorySize == 0:
 			locSim = localSimilarity(ant)
 			if locSim < dropConst:
-				#print str(2 * locSim)
 				return 2 * locSim
 			else:
 				return 1
 		else:
+		# If memory is full: compare item with items in memory, set goal
 			bestDataItem = None
 			bestDist = 10000
 			for dataItem in ant.memory:
@@ -89,10 +91,9 @@ def dropChance(ant):
 				if dist < bestDist:
 					bestDist = dist
 					ant.goal = dataItem
-					#print "Goal is set!"
 	return 0
 
-# Calculate local similarity
+# Calculate local similarity (see paper)
 def localSimilarity(ant):
 	if ant.load is not None:
 	    dataItemAnt = ant.load
@@ -107,7 +108,6 @@ def localSimilarity(ant):
 		
 	result = locality * locSim;
 	
-	# print "Locsim: " + str(locSim) + ", result: " + str(result)
 	return max(result, 0)
 
 # Determine if one ant is in local area of the other
@@ -116,7 +116,7 @@ def inLocalArea(ant, dataItem):
 		return True 
 	return False
 
-# Distance between two items
+# Distance (difference) between two items
 def distance(dataItem1, dataItem2):
 	diff = 0
 	for iItem in dataItem1.data:
@@ -124,7 +124,6 @@ def distance(dataItem1, dataItem2):
 			if iItem.sub == jItem.sub:
 				diff += math.pow(float(iItem.polarity) - float(jItem.polarity), 2)
 	diff = math.sqrt(diff)
-	#print diff
 	return diff
 
 # Creates ants and places them randomly on grid
@@ -139,7 +138,7 @@ def itemOnLocation(ant):
 			return item
 	return False
 
-def antOnEmptyLocation(ant):
+def antOnOccupiedLocation(ant):
     for item in dataItems:
 		if item is not ant.load and item.x == ant.x and item.y == ant.y:
 			return True
@@ -160,10 +159,11 @@ def iterateAnt(ant):
 	return
 	
 def dropItem(ant):
-	#print "Dropped item."
-	if antOnEmptyLocation(ant):
+	# If item cannot be dropped, then after the next step
+	if antOnOccupiedLocation(ant):
 		ant.dropLoadMode = True
 	else:
+		# First, update memory
 		if dataItemInMemory(ant):
 			updateItemInMemory(ant)
 		else:
@@ -181,9 +181,7 @@ def dropItem(ant):
 def dataItemInMemory(ant):
 	for item in ant.memory:
 		if ant.load.hotel == item.hotel:
-#			print "item al in memory"
 			return True
-#	print "item niet in memory"
 	return False
 
 def updateItemInMemory(ant):
@@ -191,40 +189,38 @@ def updateItemInMemory(ant):
 		if ant.load.hotel == item.hotel:
 			item.x = ant.load.x
 			item.y = ant.load.y
-#			print "memory item bijgewerkt"
 			return
 	return
 
 def pickupItem(ant, item):
-	#print "Picked up."
 	ant.load = item
 	return
 
-# DEZE AANPASSEN
 def moveAnt(ant):
+	# Move towards goal if goal is set
 	if ant.goal is not None and not ant.dropLoadMode:
 		if ant.x < ant.goal.x:
-			dummyX = ant.x + 1
+			dummyX = min(ant.x + 1, gridUpperXBound)
 		else: 
-			dummyX = ant.x - 1
+			dummyX = max(ant.x - 1, gridLowerXBound)
 		if ant.y < ant.goal.y:
-			dummyY = ant.y + 1
+			dummyY = min(ant.y + 1, gridUpperXBound)
 		else: 
-			dummyY = ant.y - 1
+			dummyY = max(ant.y - 1, gridLowerXBound)
 	
 	else:
 		chance = random.random()
 		if chance > 0.75:
-			dummyX = min(ant.x + math.ceil(random.random() * 3), gridUpperXBound)
+			dummyX = min(ant.x + math.ceil(random.random() * stepSize), gridUpperXBound)
 			dummyY = ant.y
 		elif chance > 0.5:
-			dummyX = max(ant.x - math.ceil(random.random() * 3), gridLowerXBound)
+			dummyX = max(ant.x - math.ceil(random.random() * stepSize), gridLowerXBound)
 			dummyY = ant.y
 		elif chance > 0.25:
-			dummyY = min(ant.y + math.ceil(random.random() * 3), gridUpperYBound)
+			dummyY = min(ant.y + math.ceil(random.random() * stepSize), gridUpperYBound)
 			dummyX = ant.x
 		else:
-			dummyY = max(ant.y - math.ceil(random.random() * 3), gridLowerYBound)
+			dummyY = max(ant.y - math.ceil(random.random() * stepSize), gridLowerYBound)
 			dummyX = ant.x
 
 	if ant.load is None:
@@ -236,6 +232,10 @@ def moveAnt(ant):
 		ant.load.x = dummyX
 		ant.load.y = dummyY
 	return
+
+#####################
+# GUI FUNCTIONS
+#####################
 
 def setAntVisibility():
 	global bAntsVisible
@@ -262,7 +262,8 @@ def exportResult():
     f.write("All ants updated at the same time: " + str(bAllAnts) + "\n")
     f.write("Generations used: " + str(generation) + "\n")
     f.write("Memory size: " + str(memorySize) + "\n")
-    f.write("Cooling down: " + str(bCooling) + "\n")
+    f.write("Step size: " + str(stepSize) + "\n")
+	f.write("Cooling down: " + str(bCooling) + "\n")
     f.write("---------------------------------------\n")
     f.write("Syntax: HotelID / X / Y\n\n")
     
@@ -282,11 +283,9 @@ def drawAnts():
 				canvas.create_oval(ant.x-3, ant.y-3, ant.x+3, ant.y+3, fill="#805555")
 			else:
 				canvas.create_oval(ant.x-1, ant.y-1, ant.x+1, ant.y+1, fill="#805555")
-			#canvas.create_line(ant.x, ant.y, ant.x+1, ant.y+1, fill="#805555")
 	
 	for dataItem in dataItems:
 		canvas.create_oval(dataItem.x-1, dataItem.y-1, dataItem.x+1, dataItem.y+1, fill="#fff")
-		#canvas.create_line(dataItem.x, dataItem.y, dataItem.x+1, dataItem.y+1, fill="#000")
 	canvas.update()
 	return
 
@@ -347,9 +346,6 @@ gridLowerYBound = 0
 gridUpperXBound = int(10 * math.sqrt(datasetSize))
 gridUpperYBound = int(10 * math.sqrt(datasetSize))
 
-# Define local area size
-localDist = 5			#Determine later
-
 #Create N/10 number of ants and place randomly in grid
 antColony = []
 createAnts(datasetSize/10)
@@ -396,7 +392,7 @@ butAntsVisible.grid(row=5, column=0, columnspan=2)
 sCoolingDown = StringVar(value="Cooling down")
 butCoolingDown = Button(root, textvariable=sCoolingDown, command=setCoolingDown)
 butCoolingDown.grid(row=6, column=0, sticky=E)
-sCooling = StringVar(value="True, value: "+str(pickupThreshold))
+sCooling = StringVar(value="False, value: "+str(pickupThreshold))
 lCoolingDown = Label(root, textvariable=sCooling)
 lCoolingDown.grid(row=6, column=1, sticky=W)
 
@@ -404,8 +400,10 @@ sExportResult = StringVar(value="Export results to file")
 butExportResult = Button(root, textvariable=sExportResult, command=exportResult)
 butExportResult.grid(row=7, column=0, columnspan=2)
 
+######################
+# PROCESS HOTEL DATA
+######################
 
-### Process data ###
 hotel = 1
 review = 1
 subjects = []
@@ -451,6 +449,9 @@ while hotel < datasetSize:
 		review += 1
 	else:
 		# Add zero values for all other subjects
+
+		allSubjects = ["room", "sleeping_comfort", "staff", "facilities", "restaurant", "value_for_money", "swimming_pool", "location", "bathroom", "parking", "noise", "cleanliness", "breakfast", "internet"]
+		
 		for otherSubject in allSubjects:
 			found = False
 			for foundsubject in subjects:
@@ -464,7 +465,10 @@ while hotel < datasetSize:
 		hotel += 1
 		review = 1
 
-### Ant clustering ###
+##################
+# CONTROL LOOP
+##################
+
 while 1:
 	# Do one generation if not paused
 	if bLoop:
