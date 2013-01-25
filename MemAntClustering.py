@@ -271,12 +271,12 @@ def exportResult():
 	for dataItem in dataItems:
 		f.write(str(int(dataItem.x)) + " ")
 	
-	f.write("]\nY = [ ")
+	f.write("];\nY = [ ")
 	
 	for dataItem in dataItems:
 		f.write(str(int(dataItem.y)) + " ")
 	
-	f.write("]\n")
+	f.write("];\n")
 
 	return
 
@@ -363,7 +363,7 @@ dataItems = []
 
 # Draw main canvas
 root = Tk()
-root.title("Incredibly realistic ant colony")
+root.title("ASO - Ant clustering algorithm")
 root.geometry(str(gridUpperXBound+150)+"x"+str(gridUpperYBound+250)+"+100+100")
 canvas = Canvas(root, width=str(gridUpperXBound), height=str(gridUpperYBound), bg='#40DE58')
 canvas.grid(row=0, column=0, columnspan=2)
