@@ -250,27 +250,35 @@ def setAntVisibility():
 	return
 
 def exportResult():
-    tijd = datetime.datetime.now()
-    f = open(os.path.dirname(os.path.abspath("AntClustering.py")) + "/results/" + tijd.strftime("%Y-%m-%d--%Hu%M") + ".txt", 'w')
-    f.write("Result export, created at " + tijd.strftime("%Y-%m-%d %H:%M:%S") + "\n")
-    f.write("Dataset size: " + str(datasetSize) + "\n")
-    f.write("Alpha: " + str(alpha) + "\n")
-    f.write("dropThreshold: " + str(dropThreshold) + "\n")
-    f.write("pickupThreshold: " + str(pickupThreshold) + "\n")
-    f.write("dropConst: " + str(dropConst) + "\n")
-    f.write("pickupConst: " + str(pickupConst) + "\n")
-    f.write("All ants updated at the same time: " + str(bAllAnts) + "\n")
-    f.write("Generations used: " + str(generation) + "\n")
-    f.write("Memory size: " + str(memorySize) + "\n")
-    f.write("Step size: " + str(stepSize) + "\n")
-	f.write("Cooling down: " + str(bCooling) + "\n")
-    f.write("---------------------------------------\n")
-    f.write("Syntax: HotelID / X / Y\n\n")
+	tijd = datetime.datetime.now()
+	f = open(os.path.dirname(os.path.abspath("AntClustering.py")) + "/results/" + tijd.strftime("%Y-%m-%d--%Hu%M") + ".txt", 'w')
+	
+	f.write("%Result export, created at " + tijd.strftime("%Y-%m-%d %H:%M:%S") + "\n")
+	f.write("%Dataset size: " + str(datasetSize) + "\n")
+	f.write("%Alpha: " + str(alpha) + "\n")
+	f.write("%dropThreshold: " + str(dropThreshold) + "\n")
+	f.write("%pickupThreshold: " + str(pickupThreshold) + "\n")
+	f.write("%dropConst: " + str(dropConst) + "\n")
+	f.write("%pickupConst: " + str(pickupConst) + "\n")
+	f.write("%All ants updated at the same time: " + str(bAllAnts) + "\n")
+	f.write("%Generations used: " + str(generation) + "\n")
+	f.write("%Memory size: " + str(memorySize) + "\n")
+	f.write("%Step size: " + str(stepSize) + "\n")
+	f.write("%Cooling down: " + str(bCooling) + ", modCooling: " + str(modCooling) + ", rateCooling: " + str(rateCooling) + "\n\n")
     
-    for dataItem in dataItems:
-	f.write(str(dataItem.hotel) + "/" + str(dataItem.x) + "/" + str(dataItem.y) + "\n")
+	f.write("X = [ ")
+	
+	for dataItem in dataItems:
+		f.write(str(int(dataItem.x)) + " ")
+	
+	f.write("]\nY = [ ")
+	
+	for dataItem in dataItems:
+		f.write(str(int(dataItem.y)) + " ")
+	
+	f.write("]\n")
 
-    return
+	return
 
 def drawAnts():
 	sCooling.set(value=str(bCooling)+", value: "+str(pickupThreshold))
