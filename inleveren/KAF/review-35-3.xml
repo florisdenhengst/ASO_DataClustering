@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:29:30CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:29:30CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:29:30CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:29:30CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:29:30CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:29:30CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">De</wf>
+    <wf wid="w_2" para="1" sent="1">reservering</wf>
+    <wf wid="w_3" para="1" sent="1">was</wf>
+    <wf wid="w_4" para="1" sent="1">nog</wf>
+    <wf wid="w_5" para="1" sent="1">niet</wf>
+    <wf wid="w_6" para="1" sent="1">verwerkt</wf>
+    <wf wid="w_7" para="1" sent="1">.</wf>
+    <wf wid="w_8" para="1" sent="2">Ik</wf>
+    <wf wid="w_9" para="1" sent="2">had</wf>
+    <wf wid="w_10" para="1" sent="2">namelijk</wf>
+    <wf wid="w_11" para="1" sent="2">op</wf>
+    <wf wid="w_12" para="1" sent="2">vrijdagavond</wf>
+    <wf wid="w_13" para="1" sent="2">gereserveerd</wf>
+    <wf wid="w_14" para="1" sent="2">.</wf>
+    <wf wid="w_15" para="1" sent="3">Dit</wf>
+    <wf wid="w_16" para="1" sent="3">is</wf>
+    <wf wid="w_17" para="1" sent="3">verder</wf>
+    <wf wid="w_18" para="1" sent="3">goed</wf>
+    <wf wid="w_19" para="1" sent="3">opgepakt</wf>
+    <wf wid="w_20" para="1" sent="3">.</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="de" type="open">
+      <span>
+        <target id="w_1"/>
+      </span>
+    </term>
+    <term tid="t_2" lemma="reservering" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="was" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="nog" type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="niet" type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_6" lemma="verwerkt" type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="." type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma="ik" type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+    </term>
+    <term tid="t_9" lemma="had" type="open">
+      <span>
+        <target id="w_9"/>
+      </span>
+    </term>
+    <term tid="t_10" lemma="namelijk" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+    <term tid="t_11" lemma="op" type="open">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+    <term tid="t_12" lemma="vrijdagavond" type="open">
+      <span>
+        <target id="w_12"/>
+      </span>
+    </term>
+    <term tid="t_13" lemma="gereserveerd" type="open">
+      <span>
+        <target id="w_13"/>
+      </span>
+    </term>
+    <term tid="t_14" lemma="." type="open">
+      <span>
+        <target id="w_14"/>
+      </span>
+    </term>
+    <term tid="t_15" lemma="dit" type="open">
+      <span>
+        <target id="w_15"/>
+      </span>
+    </term>
+    <term tid="t_16" lemma="is" type="open">
+      <span>
+        <target id="w_16"/>
+      </span>
+    </term>
+    <term tid="t_17" lemma="verder" type="open">
+      <span>
+        <target id="w_17"/>
+      </span>
+    </term>
+    <term tid="t_18" lemma="goed" type="open" pos="G">
+      <span>
+        <target id="w_18"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_19" lemma="opgepakt" type="open">
+      <span>
+        <target id="w_19"/>
+      </span>
+    </term>
+    <term tid="t_20" lemma="." type="open">
+      <span>
+        <target id="w_20"/>
+      </span>
+    </term>
+  </terms>
+  <properties>
+    <property type="staff" pid="p_1">
+      <span>
+        <target id="t_2"/>
+      </span>
+    </property>
+  </properties>
+  <opinions>
+    <opinion oid="o_1">
+      <opinion_target>
+        <span>
+          <target id="t_19"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_18"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+  </opinions>
+</KAF>

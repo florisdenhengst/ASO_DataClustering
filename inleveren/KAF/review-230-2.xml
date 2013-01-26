@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:39:05CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:39:05CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:39:05CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:39:05CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:39:05CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:39:05CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">Internet</wf>
+    <wf wid="w_2" para="1" sent="1">werkt</wf>
+    <wf wid="w_3" para="1" sent="1">niet</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="internet" type="open">
+      <span>
+        <target id="w_1"/>
+      </span>
+    </term>
+    <term tid="t_2" lemma="werkt" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="niet" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+  </terms>
+  <entities>
+    <entity type="MISC" eid="e_1">
+      <span>
+        <target id="t_1"/>
+      </span>
+    </entity>
+  </entities>
+  <properties>
+    <property type="internet" pid="p_1">
+      <span>
+        <target id="t_1"/>
+      </span>
+    </property>
+  </properties>
+</KAF>

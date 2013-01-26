@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:36:29CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:36:29CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:36:29CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:36:29CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:36:29CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:36:29CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">Backstage</wf>
+    <wf wid="w_2" para="1" sent="1">.</wf>
+    <wf wid="w_3" para="1" sent="2">vriendelijk</wf>
+    <wf wid="w_4" para="1" sent="2">personeel</wf>
+    <wf wid="w_5" para="1" sent="2">.</wf>
+    <wf wid="w_6" para="1" sent="3">gehorig</wf>
+    <wf wid="w_7" para="1" sent="3">.</wf>
+    <wf wid="w_8" para="1" sent="4">geen</wf>
+    <wf wid="w_9" para="1" sent="4">normale</wf>
+    <wf wid="w_10" para="1" sent="4">nachtrust</wf>
+    <wf wid="w_11" para="1" sent="4">kunnen</wf>
+    <wf wid="w_12" para="1" sent="4">hebben</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="backstage" type="open">
+      <span>
+        <target id="w_1"/>
+      </span>
+    </term>
+    <term tid="t_2" lemma="." type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="vriendelijk" type="open" pos="G">
+      <span>
+        <target id="w_3"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_4" lemma="personeel" type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="." type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term tid="t_6" lemma="gehorig" type="open" pos="G">
+      <span>
+        <target id="w_6"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_7" lemma="." type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma="geen" type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_9" lemma="normale" type="open">
+      <span>
+        <target id="w_9"/>
+      </span>
+    </term>
+    <term tid="t_10" lemma="nachtrust" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+    <term tid="t_11" lemma="kunnen" type="open">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+    <term tid="t_12" lemma="hebben" type="open">
+      <span>
+        <target id="w_12"/>
+      </span>
+    </term>
+  </terms>
+  <entities>
+    <entity type="LOC" eid="e_1">
+      <span>
+        <target id="t_1"/>
+      </span>
+    </entity>
+  </entities>
+  <properties>
+    <property type="noise" pid="p_1">
+      <span>
+        <target id="t_6"/>
+      </span>
+    </property>
+    <property type="sleeping_comfort" pid="p_2">
+      <span>
+        <target id="t_10"/>
+      </span>
+    </property>
+    <property type="staff" pid="p_3">
+      <span>
+        <target id="t_3"/>
+      </span>
+      <span>
+        <target id="t_4"/>
+      </span>
+    </property>
+  </properties>
+  <opinions>
+    <opinion oid="o_1">
+      <opinion_target>
+        <span>
+          <target id="t_4"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_3"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+  </opinions>
+</KAF>

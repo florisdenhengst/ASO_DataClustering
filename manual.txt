@@ -1,7 +1,0 @@
-User manual
-
-- To start a simulation, run AntClustering.py in Python
-- The terminal will show “Data loading...” for a short period of time, after which a new window will open that will display a green field and an number of buttons.
-- A simulation can be started by pressing the Play-button, pressing the other buttons influences variables or running speeds.
-- Other variables that are described in the paper can all be found and changed manually at the top of the source code.
-
