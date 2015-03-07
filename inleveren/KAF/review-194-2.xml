@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:37:06CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:37:06CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:37:06CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:37:06CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:37:06CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:37:06CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">Goede</wf>
+    <wf wid="w_2" para="1" sent="1">prijs</wf>
+    <wf wid="w_3" para="1" sent="1">-prestatie</wf>
+    <wf wid="w_4" para="1" sent="1">.</wf>
+    <wf wid="w_5" para="1" sent="2">'s</wf>
+    <wf wid="w_6" para="1" sent="2">Avonds</wf>
+    <wf wid="w_7" para="1" sent="2">tot</wf>
+    <wf wid="w_8" para="1" sent="2">laat</wf>
+    <wf wid="w_9" para="1" sent="2">gastvrij</wf>
+    <wf wid="w_10" para="1" sent="2">personeel</wf>
+    <wf wid="w_11" para="1" sent="2">.</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="goede" type="open" pos="G">
+      <span>
+        <target id="w_1"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_2" lemma="prijs" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="-prestatie" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="." type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="'s" type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term tid="t_6" lemma="avonds" type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="tot" type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma="laat" type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+    </term>
+    <term tid="t_9" lemma="gastvrij" type="open" pos="N">
+      <span>
+        <target id="w_9"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_10" lemma="personeel" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+    <term tid="t_11" lemma="." type="open">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+  </terms>
+  <properties>
+    <property type="value_for_money" pid="p_1">
+      <span>
+        <target id="t_2"/>
+      </span>
+    </property>
+    <property type="staff" pid="p_2">
+      <span>
+        <target id="t_9"/>
+      </span>
+      <span>
+        <target id="t_10"/>
+      </span>
+    </property>
+  </properties>
+  <opinions>
+    <opinion oid="o_1">
+      <opinion_target>
+        <span>
+          <target id="t_2"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_1"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_2">
+      <opinion_target>
+        <span>
+          <target id="t_10"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_9"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+  </opinions>
+</KAF>

@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:34:36CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:34:36CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:34:36CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:34:36CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:34:36CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:34:36CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">hotel</wf>
+    <wf wid="w_2" para="1" sent="1">ziet</wf>
+    <wf wid="w_3" para="1" sent="1">er</wf>
+    <wf wid="w_4" para="1" sent="1">aardig</wf>
+    <wf wid="w_5" para="1" sent="1">en</wf>
+    <wf wid="w_6" para="1" sent="1">liefelijk</wf>
+    <wf wid="w_7" para="1" sent="1">uit</wf>
+    <wf wid="w_8" para="1" sent="1">..</wf>
+    <wf wid="w_9" para="1" sent="2">hotel</wf>
+    <wf wid="w_10" para="1" sent="2">personeel</wf>
+    <wf wid="w_11" para="1" sent="2">was</wf>
+    <wf wid="w_12" para="1" sent="2">niet</wf>
+    <wf wid="w_13" para="1" sent="2">erg</wf>
+    <wf wid="w_14" para="1" sent="2">flexibel</wf>
+    <wf wid="w_15" para="1" sent="2">.</wf>
+    <wf wid="w_16" para="1" sent="3">Kamers</wf>
+    <wf wid="w_17" para="1" sent="3">waren</wf>
+    <wf wid="w_18" para="1" sent="3">erg</wf>
+    <wf wid="w_19" para="1" sent="3">klein</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="hotel" type="open">
+      <span>
+        <target id="w_1"/>
+      </span>
+    </term>
+    <term tid="t_2" lemma="ziet" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="er" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="aardig" type="open" pos="G">
+      <span>
+        <target id="w_4"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_5" lemma="en" type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term tid="t_6" lemma="liefelijk" type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="uit" type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma=".." type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+    </term>
+    <term tid="t_9" lemma="hotel" type="open">
+      <span>
+        <target id="w_9"/>
+      </span>
+    </term>
+    <term tid="t_10" lemma="personeel" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+    <term tid="t_11" lemma="was" type="open">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+    <term tid="t_12" lemma="niet" type="open">
+      <span>
+        <target id="w_12"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_13" lemma="erg" type="open">
+      <span>
+        <target id="w_13"/>
+      </span>
+      <sentiment sentiment_modifier="intensifier" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_14" lemma="flexibel" type="open" pos="G">
+      <span>
+        <target id="w_14"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_15" lemma="." type="open">
+      <span>
+        <target id="w_15"/>
+      </span>
+    </term>
+    <term tid="t_16" lemma="kamers" type="open">
+      <span>
+        <target id="w_16"/>
+      </span>
+    </term>
+    <term tid="t_17" lemma="waren" type="open">
+      <span>
+        <target id="w_17"/>
+      </span>
+    </term>
+    <term tid="t_18" lemma="erg" type="open">
+      <span>
+        <target id="w_18"/>
+      </span>
+      <sentiment sentiment_modifier="intensifier" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_19" lemma="klein" type="open">
+      <span>
+        <target id="w_19"/>
+      </span>
+    </term>
+  </terms>
+  <properties>
+    <property type="staff" pid="p_1">
+      <span>
+        <target id="t_4"/>
+      </span>
+      <span>
+        <target id="t_10"/>
+      </span>
+      <span>
+        <target id="t_14"/>
+      </span>
+    </property>
+  </properties>
+  <opinions>
+    <opinion oid="o_1">
+      <opinion_target>
+        <span>
+          <target id="t_6"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_4"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_2">
+      <opinion_target>
+        <span>
+          <target id="t_10"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-2">
+        <span>
+          <target id="t_14"/>
+          <target id="t_13"/>
+          <target id="t_12"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+  </opinions>
+</KAF>

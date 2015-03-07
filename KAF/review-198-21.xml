@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:38:05CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:38:05CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:38:05CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:38:05CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:38:05CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:38:05CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">aan</wf>
+    <wf wid="w_2" para="1" sent="1">rader</wf>
+    <wf wid="w_3" para="1" sent="1">om</wf>
+    <wf wid="w_4" para="1" sent="1">heen</wf>
+    <wf wid="w_5" para="1" sent="1">te</wf>
+    <wf wid="w_6" para="1" sent="1">gaan</wf>
+    <wf wid="w_7" para="1" sent="1">.</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="aan" type="open">
+      <span>
+        <target id="w_1"/>
+      </span>
+    </term>
+    <term tid="t_2" lemma="rader" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="om" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="heen" type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="te" type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term tid="t_6" lemma="gaan" type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="." type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+  </terms>
+</KAF>

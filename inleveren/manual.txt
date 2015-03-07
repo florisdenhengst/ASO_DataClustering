@@ -1,0 +1,19 @@
+User manual:
+
+- To start a simulation, run AntClustering.py in Python
+- The terminal will show “Data loading...” for a short period of time. 
+  Afterwards which a new window will open that will display a green field and an number of buttons.
+- A simulation can be started by pressing the Play-button, pressing the other buttons influences variables or running speeds.
+- Other variables that are described in the paper can all be found and changed manually at the top of the source code.
+
+Legend:
+
+- White squares represent data items (hotels)
+- Black squares represent ants
+- Red circles represent ants that are on their way to their determined goal
+
+Other remarks:
+
+- The original dataset is included in hotelreviews.txt
+- The parsed dataset is included in the /KAF folder
+- python-xml-property-count.py, a script that counts the property occurrences in the dataset

@@ -1,0 +1,1565 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:41:36CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:41:36CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:41:36CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:41:36CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:41:36CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:41:36CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">Hip</wf>
+    <wf wid="w_2" para="1" sent="1">of</wf>
+    <wf wid="w_3" para="1" sent="1">in</wf>
+    <wf wid="w_4" para="1" sent="1">een</wf>
+    <wf wid="w_5" para="1" sent="1">dip</wf>
+    <wf wid="w_6" para="1" sent="1">?.</wf>
+    <wf wid="w_7" para="1" sent="2">Vandaag</wf>
+    <wf wid="w_8" para="1" sent="2">ingechecked</wf>
+    <wf wid="w_9" para="1" sent="2">in</wf>
+    <wf wid="w_10" para="1" sent="2">het</wf>
+    <wf wid="w_11" para="1" sent="2">golden</wf>
+    <wf wid="w_12" para="1" sent="2">tulip</wf>
+    <wf wid="w_13" para="1" sent="2">Apple</wf>
+    <wf wid="w_14" para="1" sent="2">park</wf>
+    <wf wid="w_15" para="1" sent="2">te</wf>
+    <wf wid="w_16" para="1" sent="2">Maastricht</wf>
+    <wf wid="w_17" para="1" sent="2">.</wf>
+    <wf wid="w_18" para="1" sent="3">Na</wf>
+    <wf wid="w_19" para="1" sent="3">een</wf>
+    <wf wid="w_20" para="1" sent="3">lange</wf>
+    <wf wid="w_21" para="1" sent="3">reis</wf>
+    <wf wid="w_22" para="1" sent="3">was</wf>
+    <wf wid="w_23" para="1" sent="3">er</wf>
+    <wf wid="w_24" para="1" sent="3">enorme</wf>
+    <wf wid="w_25" para="1" sent="3">behoefte</wf>
+    <wf wid="w_26" para="1" sent="3">aan</wf>
+    <wf wid="w_27" para="1" sent="3">2</wf>
+    <wf wid="w_28" para="1" sent="3">dingen</wf>
+    <wf wid="w_29" para="1" sent="3">.</wf>
+    <wf wid="w_30" para="1" sent="4">Een</wf>
+    <wf wid="w_31" para="1" sent="4">schoon</wf>
+    <wf wid="w_32" para="1" sent="4">bed</wf>
+    <wf wid="w_33" para="1" sent="4">en</wf>
+    <wf wid="w_34" para="1" sent="4">een</wf>
+    <wf wid="w_35" para="1" sent="4">goede</wf>
+    <wf wid="w_36" para="1" sent="4">maaltijd</wf>
+    <wf wid="w_37" para="1" sent="4">.</wf>
+    <wf wid="w_38" para="1" sent="5">Op</wf>
+    <wf wid="w_39" para="1" sent="5">het</wf>
+    <wf wid="w_40" para="1" sent="5">eerste</wf>
+    <wf wid="w_41" para="1" sent="5">oog</wf>
+    <wf wid="w_42" para="1" sent="5">ziet</wf>
+    <wf wid="w_43" para="1" sent="5">het</wf>
+    <wf wid="w_44" para="1" sent="5">hotel</wf>
+    <wf wid="w_45" para="1" sent="5">er</wf>
+    <wf wid="w_46" para="1" sent="5">hip</wf>
+    <wf wid="w_47" para="1" sent="5">en</wf>
+    <wf wid="w_48" para="1" sent="5">trendy</wf>
+    <wf wid="w_49" para="1" sent="5">uit</wf>
+    <wf wid="w_50" para="1" sent="5">.</wf>
+    <wf wid="w_51" para="1" sent="6">Maar</wf>
+    <wf wid="w_52" para="1" sent="6">dit</wf>
+    <wf wid="w_53" para="1" sent="6">valt</wf>
+    <wf wid="w_54" para="1" sent="6">vies</wf>
+    <wf wid="w_55" para="1" sent="6">tegen</wf>
+    <wf wid="w_56" para="1" sent="6">zodra</wf>
+    <wf wid="w_57" para="1" sent="6">je</wf>
+    <wf wid="w_58" para="1" sent="6">een</wf>
+    <wf wid="w_59" para="1" sent="6">kamer</wf>
+    <wf wid="w_60" para="1" sent="6">van</wf>
+    <wf wid="w_61" para="1" sent="6">binnen</wf>
+    <wf wid="w_62" para="1" sent="6">bekijkt</wf>
+    <wf wid="w_63" para="1" sent="6">.</wf>
+    <wf wid="w_64" para="1" sent="7">In</wf>
+    <wf wid="w_65" para="1" sent="7">de</wf>
+    <wf wid="w_66" para="1" sent="7">gang</wf>
+    <wf wid="w_67" para="1" sent="7">is</wf>
+    <wf wid="w_68" para="1" sent="7">het</wf>
+    <wf wid="w_69" para="1" sent="7">tapijt</wf>
+    <wf wid="w_70" para="1" sent="7">vies</wf>
+    <wf wid="w_71" para="1" sent="7">en</wf>
+    <wf wid="w_72" para="1" sent="7">hangen</wf>
+    <wf wid="w_73" para="1" sent="7">er</wf>
+    <wf wid="w_74" para="1" sent="7">spinnenwebben</wf>
+    <wf wid="w_75" para="1" sent="7">aan</wf>
+    <wf wid="w_76" para="1" sent="7">het</wf>
+    <wf wid="w_77" para="1" sent="7">plafond</wf>
+    <wf wid="w_78" para="1" sent="7">.</wf>
+    <wf wid="w_79" para="1" sent="8">De</wf>
+    <wf wid="w_80" para="1" sent="8">kamers</wf>
+    <wf wid="w_81" para="1" sent="8">zijn</wf>
+    <wf wid="w_82" para="1" sent="8">net</wf>
+    <wf wid="w_83" para="1" sent="8">zo</wf>
+    <wf wid="w_84" para="1" sent="8">en</wf>
+    <wf wid="w_85" para="1" sent="8">enorm</wf>
+    <wf wid="w_86" para="1" sent="8">verouderd</wf>
+    <wf wid="w_87" para="1" sent="8">.</wf>
+    <wf wid="w_88" para="1" sent="9">Heb</wf>
+    <wf wid="w_89" para="1" sent="9">ook</wf>
+    <wf wid="w_90" para="1" sent="9">niet</wf>
+    <wf wid="w_91" para="1" sent="9">echt</wf>
+    <wf wid="w_92" para="1" sent="9">het</wf>
+    <wf wid="w_93" para="1" sent="9">idee</wf>
+    <wf wid="w_94" para="1" sent="9">dat</wf>
+    <wf wid="w_95" para="1" sent="9">de</wf>
+    <wf wid="w_96" para="1" sent="9">lakens</wf>
+    <wf wid="w_97" para="1" sent="9">schoon</wf>
+    <wf wid="w_98" para="1" sent="9">zijn</wf>
+    <wf wid="w_99" para="1" sent="9">.</wf>
+    <wf wid="w_100" para="1" sent="10">Ben</wf>
+    <wf wid="w_101" para="1" sent="10">gelijk</wf>
+    <wf wid="w_102" para="1" sent="10">een</wf>
+    <wf wid="w_103" para="1" sent="10">hapje</wf>
+    <wf wid="w_104" para="1" sent="10">gaan</wf>
+    <wf wid="w_105" para="1" sent="10">eten</wf>
+    <wf wid="w_106" para="1" sent="10">in</wf>
+    <wf wid="w_107" para="1" sent="10">het</wf>
+    <wf wid="w_108" para="1" sent="10">restaurant</wf>
+    <wf wid="w_109" para="1" sent="10">.</wf>
+    <wf wid="w_110" para="1" sent="11">De</wf>
+    <wf wid="w_111" para="1" sent="11">service</wf>
+    <wf wid="w_112" para="1" sent="11">is</wf>
+    <wf wid="w_113" para="1" sent="11">belabberd</wf>
+    <wf wid="w_114" para="1" sent="11">en</wf>
+    <wf wid="w_115" para="1" sent="11">het</wf>
+    <wf wid="w_116" para="1" sent="11">duurt</wf>
+    <wf wid="w_117" para="1" sent="11">lang</wf>
+    <wf wid="w_118" para="1" sent="11">voor</wf>
+    <wf wid="w_119" para="1" sent="11">je</wf>
+    <wf wid="w_120" para="1" sent="11">geholpen</wf>
+    <wf wid="w_121" para="1" sent="11">wordt</wf>
+    <wf wid="w_122" para="1" sent="11">daarnaast</wf>
+    <wf wid="w_123" para="1" sent="11">is</wf>
+    <wf wid="w_124" para="1" sent="11">het</wf>
+    <wf wid="w_125" para="1" sent="11">eten</wf>
+    <wf wid="w_126" para="1" sent="11">ook</wf>
+    <wf wid="w_127" para="1" sent="11">niet</wf>
+    <wf wid="w_128" para="1" sent="11">van</wf>
+    <wf wid="w_129" para="1" sent="11">dien</wf>
+    <wf wid="w_130" para="1" sent="11">aard</wf>
+    <wf wid="w_131" para="1" sent="11">dat</wf>
+    <wf wid="w_132" para="1" sent="11">ik</wf>
+    <wf wid="w_133" para="1" sent="11">erover</wf>
+    <wf wid="w_134" para="1" sent="11">naar</wf>
+    <wf wid="w_135" para="1" sent="11">huis</wf>
+    <wf wid="w_136" para="1" sent="11">zou</wf>
+    <wf wid="w_137" para="1" sent="11">schrijven</wf>
+    <wf wid="w_138" para="1" sent="11">.</wf>
+    <wf wid="w_139" para="1" sent="12">De</wf>
+    <wf wid="w_140" para="1" sent="12">salade</wf>
+    <wf wid="w_141" para="1" sent="12">valdieu</wf>
+    <wf wid="w_142" para="1" sent="12">was</wf>
+    <wf wid="w_143" para="1" sent="12">een</wf>
+    <wf wid="w_144" para="1" sent="12">stuk</wf>
+    <wf wid="w_145" para="1" sent="12">kaas</wf>
+    <wf wid="w_146" para="1" sent="12">met</wf>
+    <wf wid="w_147" para="1" sent="12">rucola</wf>
+    <wf wid="w_148" para="1" sent="12">eronder</wf>
+    <wf wid="w_149" para="1" sent="12">en</wf>
+    <wf wid="w_150" para="1" sent="12">een</wf>
+    <wf wid="w_151" para="1" sent="12">paar</wf>
+    <wf wid="w_152" para="1" sent="12">zongedroogde</wf>
+    <wf wid="w_153" para="1" sent="12">tomaten</wf>
+    <wf wid="w_154" para="1" sent="12">voor</wf>
+    <wf wid="w_155" para="1" sent="12">de</wf>
+    <wf wid="w_156" para="1" sent="12">kleur</wf>
+    <wf wid="w_157" para="1" sent="12">..</wf>
+    <wf wid="w_158" para="1" sent="13">De</wf>
+    <wf wid="w_159" para="1" sent="13">kabeljauw</wf>
+    <wf wid="w_160" para="1" sent="13">wordt</wf>
+    <wf wid="w_161" para="1" sent="13">geserveerd</wf>
+    <wf wid="w_162" para="1" sent="13">met</wf>
+    <wf wid="w_163" para="1" sent="13">een</wf>
+    <wf wid="w_164" para="1" sent="13">te</wf>
+    <wf wid="w_165" para="1" sent="13">dikke</wf>
+    <wf wid="w_166" para="1" sent="13">safraansaus</wf>
+    <wf wid="w_167" para="1" sent="13">en</wf>
+    <wf wid="w_168" para="1" sent="13">veel</wf>
+    <wf wid="w_169" para="1" sent="13">te</wf>
+    <wf wid="w_170" para="1" sent="13">veel</wf>
+    <wf wid="w_171" para="1" sent="13">pruimen</wf>
+    <wf wid="w_172" para="1" sent="13">zodat</wf>
+    <wf wid="w_173" para="1" sent="13">het</wf>
+    <wf wid="w_174" para="1" sent="13">een</wf>
+    <wf wid="w_175" para="1" sent="13">smaakloze</wf>
+    <wf wid="w_176" para="1" sent="13">zoete</wf>
+    <wf wid="w_177" para="1" sent="13">brei</wf>
+    <wf wid="w_178" para="1" sent="13">wordt</wf>
+    <wf wid="w_179" para="1" sent="13">.</wf>
+    <wf wid="w_180" para="1" sent="14">De</wf>
+    <wf wid="w_181" para="1" sent="14">dubbele</wf>
+    <wf wid="w_182" para="1" sent="14">espresso</wf>
+    <wf wid="w_183" para="1" sent="14">was</wf>
+    <wf wid="w_184" para="1" sent="14">een</wf>
+    <wf wid="w_185" para="1" sent="14">slap</wf>
+    <wf wid="w_186" para="1" sent="14">bakkie</wf>
+    <wf wid="w_187" para="1" sent="14">zwart</wf>
+    <wf wid="w_188" para="1" sent="14">rioolwater</wf>
+    <wf wid="w_189" para="1" sent="14">.</wf>
+    <wf wid="w_190" para="1" sent="15">Ik</wf>
+    <wf wid="w_191" para="1" sent="15">zou</wf>
+    <wf wid="w_192" para="1" sent="15">hier</wf>
+    <wf wid="w_193" para="1" sent="15">langer</wf>
+    <wf wid="w_194" para="1" sent="15">moeten</wf>
+    <wf wid="w_195" para="1" sent="15">verblijven</wf>
+    <wf wid="w_196" para="1" sent="15">maar</wf>
+    <wf wid="w_197" para="1" sent="15">check</wf>
+    <wf wid="w_198" para="1" sent="15">morgen</wf>
+    <wf wid="w_199" para="1" sent="15">direct</wf>
+    <wf wid="w_200" para="1" sent="15">uit</wf>
+    <wf wid="w_201" para="1" sent="15">!!</wf>
+    <wf wid="w_202" para="1" sent="16">Absoluut</wf>
+    <wf wid="w_203" para="1" sent="16">geen</wf>
+    <wf wid="w_204" para="1" sent="16">aanrader</wf>
+    <wf wid="w_205" para="1" sent="16">om</wf>
+    <wf wid="w_206" para="1" sent="16">naartoe</wf>
+    <wf wid="w_207" para="1" sent="16">te</wf>
+    <wf wid="w_208" para="1" sent="16">gaan</wf>
+    <wf wid="w_209" para="1" sent="16">!</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="hip" type="open" pos="G">
+      <span>
+        <target id="w_1"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_2" lemma="of" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="in" type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="een" type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="dip" type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term tid="t_6" lemma="?." type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="vandaag" type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma="ingechecked" type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+    </term>
+    <term tid="t_9" lemma="in" type="open">
+      <span>
+        <target id="w_9"/>
+      </span>
+    </term>
+    <term tid="t_10" lemma="het" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+    <term tid="t_11" lemma="golden" type="open">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+    <term tid="t_12" lemma="tulip" type="open">
+      <span>
+        <target id="w_12"/>
+      </span>
+    </term>
+    <term tid="t_13" lemma="apple" type="open">
+      <span>
+        <target id="w_13"/>
+      </span>
+    </term>
+    <term tid="t_14" lemma="park" type="open">
+      <span>
+        <target id="w_14"/>
+      </span>
+    </term>
+    <term tid="t_15" lemma="te" type="open">
+      <span>
+        <target id="w_15"/>
+      </span>
+    </term>
+    <term tid="t_16" lemma="maastricht" type="open">
+      <span>
+        <target id="w_16"/>
+      </span>
+    </term>
+    <term tid="t_17" lemma="." type="open">
+      <span>
+        <target id="w_17"/>
+      </span>
+    </term>
+    <term tid="t_18" lemma="na" type="open">
+      <span>
+        <target id="w_18"/>
+      </span>
+    </term>
+    <term tid="t_19" lemma="een" type="open">
+      <span>
+        <target id="w_19"/>
+      </span>
+    </term>
+    <term tid="t_20" lemma="lange" type="open">
+      <span>
+        <target id="w_20"/>
+      </span>
+    </term>
+    <term tid="t_21" lemma="reis" type="open">
+      <span>
+        <target id="w_21"/>
+      </span>
+    </term>
+    <term tid="t_22" lemma="was" type="open">
+      <span>
+        <target id="w_22"/>
+      </span>
+    </term>
+    <term tid="t_23" lemma="er" type="open">
+      <span>
+        <target id="w_23"/>
+      </span>
+    </term>
+    <term tid="t_24" lemma="enorme" type="open">
+      <span>
+        <target id="w_24"/>
+      </span>
+    </term>
+    <term tid="t_25" lemma="behoefte" type="open">
+      <span>
+        <target id="w_25"/>
+      </span>
+    </term>
+    <term tid="t_26" lemma="aan" type="open">
+      <span>
+        <target id="w_26"/>
+      </span>
+    </term>
+    <term tid="t_27" lemma="2" type="open">
+      <span>
+        <target id="w_27"/>
+      </span>
+    </term>
+    <term tid="t_28" lemma="dingen" type="open">
+      <span>
+        <target id="w_28"/>
+      </span>
+    </term>
+    <term tid="t_29" lemma="." type="open">
+      <span>
+        <target id="w_29"/>
+      </span>
+    </term>
+    <term tid="t_30" lemma="een" type="open">
+      <span>
+        <target id="w_30"/>
+      </span>
+    </term>
+    <term tid="t_31" lemma="schoon" type="open" pos="G">
+      <span>
+        <target id="w_31"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_32" lemma="bed" type="open">
+      <span>
+        <target id="w_32"/>
+      </span>
+    </term>
+    <term tid="t_33" lemma="en" type="open">
+      <span>
+        <target id="w_33"/>
+      </span>
+    </term>
+    <term tid="t_34" lemma="een" type="open">
+      <span>
+        <target id="w_34"/>
+      </span>
+    </term>
+    <term tid="t_35" lemma="goede" type="open" pos="G">
+      <span>
+        <target id="w_35"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_36" lemma="maaltijd" type="open">
+      <span>
+        <target id="w_36"/>
+      </span>
+    </term>
+    <term tid="t_37" lemma="." type="open">
+      <span>
+        <target id="w_37"/>
+      </span>
+    </term>
+    <term tid="t_38" lemma="op" type="open">
+      <span>
+        <target id="w_38"/>
+      </span>
+    </term>
+    <term tid="t_39" lemma="het" type="open">
+      <span>
+        <target id="w_39"/>
+      </span>
+    </term>
+    <term tid="t_40" lemma="eerste" type="open">
+      <span>
+        <target id="w_40"/>
+      </span>
+    </term>
+    <term tid="t_41" lemma="oog" type="open">
+      <span>
+        <target id="w_41"/>
+      </span>
+    </term>
+    <term tid="t_42" lemma="ziet" type="open">
+      <span>
+        <target id="w_42"/>
+      </span>
+    </term>
+    <term tid="t_43" lemma="het" type="open">
+      <span>
+        <target id="w_43"/>
+      </span>
+    </term>
+    <term tid="t_44" lemma="hotel" type="open">
+      <span>
+        <target id="w_44"/>
+      </span>
+    </term>
+    <term tid="t_45" lemma="er" type="open">
+      <span>
+        <target id="w_45"/>
+      </span>
+    </term>
+    <term tid="t_46" lemma="hip" type="open" pos="G">
+      <span>
+        <target id="w_46"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_47" lemma="en" type="open">
+      <span>
+        <target id="w_47"/>
+      </span>
+    </term>
+    <term tid="t_48" lemma="trendy" type="open" pos="G">
+      <span>
+        <target id="w_48"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_49" lemma="uit" type="open">
+      <span>
+        <target id="w_49"/>
+      </span>
+    </term>
+    <term tid="t_50" lemma="." type="open">
+      <span>
+        <target id="w_50"/>
+      </span>
+    </term>
+    <term tid="t_51" lemma="maar" type="open">
+      <span>
+        <target id="w_51"/>
+      </span>
+    </term>
+    <term tid="t_52" lemma="dit" type="open">
+      <span>
+        <target id="w_52"/>
+      </span>
+    </term>
+    <term tid="t_53" lemma="valt" type="open">
+      <span>
+        <target id="w_53"/>
+      </span>
+    </term>
+    <term tid="t_54" lemma="vies" type="open" pos="G">
+      <span>
+        <target id="w_54"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_55" lemma="tegen" type="open">
+      <span>
+        <target id="w_55"/>
+      </span>
+    </term>
+    <term tid="t_56" lemma="zodra" type="open">
+      <span>
+        <target id="w_56"/>
+      </span>
+    </term>
+    <term tid="t_57" lemma="je" type="open">
+      <span>
+        <target id="w_57"/>
+      </span>
+    </term>
+    <term tid="t_58" lemma="een" type="open">
+      <span>
+        <target id="w_58"/>
+      </span>
+    </term>
+    <term tid="t_59" lemma="kamer" type="open">
+      <span>
+        <target id="w_59"/>
+      </span>
+    </term>
+    <term tid="t_60" lemma="van" type="open">
+      <span>
+        <target id="w_60"/>
+      </span>
+    </term>
+    <term tid="t_61" lemma="binnen" type="open">
+      <span>
+        <target id="w_61"/>
+      </span>
+    </term>
+    <term tid="t_62" lemma="bekijkt" type="open">
+      <span>
+        <target id="w_62"/>
+      </span>
+    </term>
+    <term tid="t_63" lemma="." type="open">
+      <span>
+        <target id="w_63"/>
+      </span>
+    </term>
+    <term tid="t_64" lemma="in" type="open">
+      <span>
+        <target id="w_64"/>
+      </span>
+    </term>
+    <term tid="t_65" lemma="de" type="open">
+      <span>
+        <target id="w_65"/>
+      </span>
+    </term>
+    <term tid="t_66" lemma="gang" type="open">
+      <span>
+        <target id="w_66"/>
+      </span>
+    </term>
+    <term tid="t_67" lemma="is" type="open">
+      <span>
+        <target id="w_67"/>
+      </span>
+    </term>
+    <term tid="t_68" lemma="het" type="open">
+      <span>
+        <target id="w_68"/>
+      </span>
+    </term>
+    <term tid="t_69" lemma="tapijt" type="open">
+      <span>
+        <target id="w_69"/>
+      </span>
+    </term>
+    <term tid="t_70" lemma="vies" type="open" pos="G">
+      <span>
+        <target id="w_70"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_71" lemma="en" type="open">
+      <span>
+        <target id="w_71"/>
+      </span>
+    </term>
+    <term tid="t_72" lemma="hangen" type="open">
+      <span>
+        <target id="w_72"/>
+      </span>
+    </term>
+    <term tid="t_73" lemma="er" type="open">
+      <span>
+        <target id="w_73"/>
+      </span>
+    </term>
+    <term tid="t_74" lemma="spinnenwebben" type="open">
+      <span>
+        <target id="w_74"/>
+      </span>
+    </term>
+    <term tid="t_75" lemma="aan" type="open">
+      <span>
+        <target id="w_75"/>
+      </span>
+    </term>
+    <term tid="t_76" lemma="het" type="open">
+      <span>
+        <target id="w_76"/>
+      </span>
+    </term>
+    <term tid="t_77" lemma="plafond" type="open">
+      <span>
+        <target id="w_77"/>
+      </span>
+    </term>
+    <term tid="t_78" lemma="." type="open">
+      <span>
+        <target id="w_78"/>
+      </span>
+    </term>
+    <term tid="t_79" lemma="de" type="open">
+      <span>
+        <target id="w_79"/>
+      </span>
+    </term>
+    <term tid="t_80" lemma="kamers" type="open">
+      <span>
+        <target id="w_80"/>
+      </span>
+    </term>
+    <term tid="t_81" lemma="zijn" type="open">
+      <span>
+        <target id="w_81"/>
+      </span>
+    </term>
+    <term tid="t_82" lemma="net" type="open" pos="G">
+      <span>
+        <target id="w_82"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_83" lemma="zo" type="open">
+      <span>
+        <target id="w_83"/>
+      </span>
+    </term>
+    <term tid="t_84" lemma="en" type="open">
+      <span>
+        <target id="w_84"/>
+      </span>
+    </term>
+    <term tid="t_85" lemma="enorm" type="open">
+      <span>
+        <target id="w_85"/>
+      </span>
+      <sentiment sentiment_modifier="intensifier" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_86" lemma="verouderd" type="open" pos="G">
+      <span>
+        <target id="w_86"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_87" lemma="." type="open">
+      <span>
+        <target id="w_87"/>
+      </span>
+    </term>
+    <term tid="t_88" lemma="heb" type="open">
+      <span>
+        <target id="w_88"/>
+      </span>
+    </term>
+    <term tid="t_89" lemma="ook" type="open">
+      <span>
+        <target id="w_89"/>
+      </span>
+    </term>
+    <term tid="t_90" lemma="niet" type="open">
+      <span>
+        <target id="w_90"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_91" lemma="echt" type="open">
+      <span>
+        <target id="w_91"/>
+      </span>
+      <sentiment sentiment_modifier="intensifier" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_92" lemma="het" type="open">
+      <span>
+        <target id="w_92"/>
+      </span>
+    </term>
+    <term tid="t_93" lemma="idee" type="open" pos="N">
+      <span>
+        <target id="w_93"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_94" lemma="dat" type="open">
+      <span>
+        <target id="w_94"/>
+      </span>
+    </term>
+    <term tid="t_95" lemma="de" type="open">
+      <span>
+        <target id="w_95"/>
+      </span>
+    </term>
+    <term tid="t_96" lemma="lakens" type="open">
+      <span>
+        <target id="w_96"/>
+      </span>
+    </term>
+    <term tid="t_97" lemma="schoon" type="open" pos="G">
+      <span>
+        <target id="w_97"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_98" lemma="zijn" type="open">
+      <span>
+        <target id="w_98"/>
+      </span>
+    </term>
+    <term tid="t_99" lemma="." type="open">
+      <span>
+        <target id="w_99"/>
+      </span>
+    </term>
+    <term tid="t_100" lemma="ben" type="open">
+      <span>
+        <target id="w_100"/>
+      </span>
+    </term>
+    <term tid="t_101" lemma="gelijk" type="open">
+      <span>
+        <target id="w_101"/>
+      </span>
+    </term>
+    <term tid="t_102" lemma="een" type="open">
+      <span>
+        <target id="w_102"/>
+      </span>
+    </term>
+    <term tid="t_103" lemma="hapje" type="open">
+      <span>
+        <target id="w_103"/>
+      </span>
+    </term>
+    <term tid="t_104" lemma="gaan" type="open">
+      <span>
+        <target id="w_104"/>
+      </span>
+    </term>
+    <term tid="t_105" lemma="eten" type="open">
+      <span>
+        <target id="w_105"/>
+      </span>
+    </term>
+    <term tid="t_106" lemma="in" type="open">
+      <span>
+        <target id="w_106"/>
+      </span>
+    </term>
+    <term tid="t_107" lemma="het" type="open">
+      <span>
+        <target id="w_107"/>
+      </span>
+    </term>
+    <term tid="t_108" lemma="restaurant" type="open">
+      <span>
+        <target id="w_108"/>
+      </span>
+    </term>
+    <term tid="t_109" lemma="." type="open">
+      <span>
+        <target id="w_109"/>
+      </span>
+    </term>
+    <term tid="t_110" lemma="de" type="open">
+      <span>
+        <target id="w_110"/>
+      </span>
+    </term>
+    <term tid="t_111" lemma="service" type="open">
+      <span>
+        <target id="w_111"/>
+      </span>
+    </term>
+    <term tid="t_112" lemma="is" type="open">
+      <span>
+        <target id="w_112"/>
+      </span>
+    </term>
+    <term tid="t_113" lemma="belabberd" type="open" pos="G">
+      <span>
+        <target id="w_113"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_114" lemma="en" type="open">
+      <span>
+        <target id="w_114"/>
+      </span>
+    </term>
+    <term tid="t_115" lemma="het" type="open">
+      <span>
+        <target id="w_115"/>
+      </span>
+    </term>
+    <term tid="t_116" lemma="duurt" type="open">
+      <span>
+        <target id="w_116"/>
+      </span>
+    </term>
+    <term tid="t_117" lemma="lang" type="open">
+      <span>
+        <target id="w_117"/>
+      </span>
+    </term>
+    <term tid="t_118" lemma="voor" type="open">
+      <span>
+        <target id="w_118"/>
+      </span>
+    </term>
+    <term tid="t_119" lemma="je" type="open">
+      <span>
+        <target id="w_119"/>
+      </span>
+    </term>
+    <term tid="t_120" lemma="geholpen" type="open">
+      <span>
+        <target id="w_120"/>
+      </span>
+    </term>
+    <term tid="t_121" lemma="wordt" type="open">
+      <span>
+        <target id="w_121"/>
+      </span>
+    </term>
+    <term tid="t_122" lemma="daarnaast" type="open">
+      <span>
+        <target id="w_122"/>
+      </span>
+    </term>
+    <term tid="t_123" lemma="is" type="open">
+      <span>
+        <target id="w_123"/>
+      </span>
+    </term>
+    <term tid="t_124" lemma="het" type="open">
+      <span>
+        <target id="w_124"/>
+      </span>
+    </term>
+    <term tid="t_125" lemma="eten" type="open">
+      <span>
+        <target id="w_125"/>
+      </span>
+    </term>
+    <term tid="t_126" lemma="ook" type="open">
+      <span>
+        <target id="w_126"/>
+      </span>
+    </term>
+    <term tid="t_127" lemma="niet" type="open">
+      <span>
+        <target id="w_127"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_128" lemma="van" type="open">
+      <span>
+        <target id="w_128"/>
+      </span>
+    </term>
+    <term tid="t_129" lemma="dien" type="open">
+      <span>
+        <target id="w_129"/>
+      </span>
+    </term>
+    <term tid="t_130" lemma="aard" type="open">
+      <span>
+        <target id="w_130"/>
+      </span>
+    </term>
+    <term tid="t_131" lemma="dat" type="open">
+      <span>
+        <target id="w_131"/>
+      </span>
+    </term>
+    <term tid="t_132" lemma="ik" type="open">
+      <span>
+        <target id="w_132"/>
+      </span>
+    </term>
+    <term tid="t_133" lemma="erover" type="open">
+      <span>
+        <target id="w_133"/>
+      </span>
+    </term>
+    <term tid="t_134" lemma="naar" type="open" pos="G">
+      <span>
+        <target id="w_134"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_135" lemma="huis" type="open">
+      <span>
+        <target id="w_135"/>
+      </span>
+    </term>
+    <term tid="t_136" lemma="zou" type="open">
+      <span>
+        <target id="w_136"/>
+      </span>
+    </term>
+    <term tid="t_137" lemma="schrijven" type="open">
+      <span>
+        <target id="w_137"/>
+      </span>
+    </term>
+    <term tid="t_138" lemma="." type="open">
+      <span>
+        <target id="w_138"/>
+      </span>
+    </term>
+    <term tid="t_139" lemma="de" type="open">
+      <span>
+        <target id="w_139"/>
+      </span>
+    </term>
+    <term tid="t_140" lemma="salade" type="open">
+      <span>
+        <target id="w_140"/>
+      </span>
+    </term>
+    <term tid="t_141" lemma="valdieu" type="open">
+      <span>
+        <target id="w_141"/>
+      </span>
+    </term>
+    <term tid="t_142" lemma="was" type="open">
+      <span>
+        <target id="w_142"/>
+      </span>
+    </term>
+    <term tid="t_143" lemma="een" type="open">
+      <span>
+        <target id="w_143"/>
+      </span>
+    </term>
+    <term tid="t_144" lemma="stuk" type="open">
+      <span>
+        <target id="w_144"/>
+      </span>
+    </term>
+    <term tid="t_145" lemma="kaas" type="open">
+      <span>
+        <target id="w_145"/>
+      </span>
+    </term>
+    <term tid="t_146" lemma="met" type="open">
+      <span>
+        <target id="w_146"/>
+      </span>
+    </term>
+    <term tid="t_147" lemma="rucola" type="open">
+      <span>
+        <target id="w_147"/>
+      </span>
+    </term>
+    <term tid="t_148" lemma="eronder" type="open">
+      <span>
+        <target id="w_148"/>
+      </span>
+    </term>
+    <term tid="t_149" lemma="en" type="open">
+      <span>
+        <target id="w_149"/>
+      </span>
+    </term>
+    <term tid="t_150" lemma="een" type="open">
+      <span>
+        <target id="w_150"/>
+      </span>
+    </term>
+    <term tid="t_151" lemma="paar" type="open">
+      <span>
+        <target id="w_151"/>
+      </span>
+    </term>
+    <term tid="t_152" lemma="zongedroogde" type="open">
+      <span>
+        <target id="w_152"/>
+      </span>
+    </term>
+    <term tid="t_153" lemma="tomaten" type="open">
+      <span>
+        <target id="w_153"/>
+      </span>
+    </term>
+    <term tid="t_154" lemma="voor" type="open">
+      <span>
+        <target id="w_154"/>
+      </span>
+    </term>
+    <term tid="t_155" lemma="de" type="open">
+      <span>
+        <target id="w_155"/>
+      </span>
+    </term>
+    <term tid="t_156" lemma="kleur" type="open">
+      <span>
+        <target id="w_156"/>
+      </span>
+    </term>
+    <term tid="t_157" lemma=".." type="open">
+      <span>
+        <target id="w_157"/>
+      </span>
+    </term>
+    <term tid="t_158" lemma="de" type="open">
+      <span>
+        <target id="w_158"/>
+      </span>
+    </term>
+    <term tid="t_159" lemma="kabeljauw" type="open">
+      <span>
+        <target id="w_159"/>
+      </span>
+    </term>
+    <term tid="t_160" lemma="wordt" type="open">
+      <span>
+        <target id="w_160"/>
+      </span>
+    </term>
+    <term tid="t_161" lemma="geserveerd" type="open">
+      <span>
+        <target id="w_161"/>
+      </span>
+    </term>
+    <term tid="t_162" lemma="met" type="open">
+      <span>
+        <target id="w_162"/>
+      </span>
+    </term>
+    <term tid="t_163" lemma="een" type="open">
+      <span>
+        <target id="w_163"/>
+      </span>
+    </term>
+    <term tid="t_164" lemma="te" type="open">
+      <span>
+        <target id="w_164"/>
+      </span>
+    </term>
+    <term tid="t_165" lemma="dikke" type="open">
+      <span>
+        <target id="w_165"/>
+      </span>
+    </term>
+    <term tid="t_166" lemma="safraansaus" type="open">
+      <span>
+        <target id="w_166"/>
+      </span>
+    </term>
+    <term tid="t_167" lemma="en" type="open">
+      <span>
+        <target id="w_167"/>
+      </span>
+    </term>
+    <term tid="t_168" lemma="veel" type="open">
+      <span>
+        <target id="w_168"/>
+      </span>
+    </term>
+    <term tid="t_169" lemma="te" type="open">
+      <span>
+        <target id="w_169"/>
+      </span>
+    </term>
+    <term tid="t_170" lemma="veel" type="open">
+      <span>
+        <target id="w_170"/>
+      </span>
+    </term>
+    <term tid="t_171" lemma="pruimen" type="open">
+      <span>
+        <target id="w_171"/>
+      </span>
+    </term>
+    <term tid="t_172" lemma="zodat" type="open">
+      <span>
+        <target id="w_172"/>
+      </span>
+    </term>
+    <term tid="t_173" lemma="het" type="open">
+      <span>
+        <target id="w_173"/>
+      </span>
+    </term>
+    <term tid="t_174" lemma="een" type="open">
+      <span>
+        <target id="w_174"/>
+      </span>
+    </term>
+    <term tid="t_175" lemma="smaakloze" type="open">
+      <span>
+        <target id="w_175"/>
+      </span>
+    </term>
+    <term tid="t_176" lemma="zoete" type="open">
+      <span>
+        <target id="w_176"/>
+      </span>
+    </term>
+    <term tid="t_177" lemma="brei" type="open">
+      <span>
+        <target id="w_177"/>
+      </span>
+    </term>
+    <term tid="t_178" lemma="wordt" type="open">
+      <span>
+        <target id="w_178"/>
+      </span>
+    </term>
+    <term tid="t_179" lemma="." type="open">
+      <span>
+        <target id="w_179"/>
+      </span>
+    </term>
+    <term tid="t_180" lemma="de" type="open">
+      <span>
+        <target id="w_180"/>
+      </span>
+    </term>
+    <term tid="t_181" lemma="dubbele" type="open">
+      <span>
+        <target id="w_181"/>
+      </span>
+    </term>
+    <term tid="t_182" lemma="espresso" type="open">
+      <span>
+        <target id="w_182"/>
+      </span>
+    </term>
+    <term tid="t_183" lemma="was" type="open">
+      <span>
+        <target id="w_183"/>
+      </span>
+    </term>
+    <term tid="t_184" lemma="een" type="open">
+      <span>
+        <target id="w_184"/>
+      </span>
+    </term>
+    <term tid="t_185" lemma="slap" type="open" pos="G">
+      <span>
+        <target id="w_185"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_186" lemma="bakkie" type="open">
+      <span>
+        <target id="w_186"/>
+      </span>
+    </term>
+    <term tid="t_187" lemma="zwart" type="open" pos="G">
+      <span>
+        <target id="w_187"/>
+      </span>
+      <sentiment polarity="negative" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_188" lemma="rioolwater" type="open">
+      <span>
+        <target id="w_188"/>
+      </span>
+    </term>
+    <term tid="t_189" lemma="." type="open">
+      <span>
+        <target id="w_189"/>
+      </span>
+    </term>
+    <term tid="t_190" lemma="ik" type="open">
+      <span>
+        <target id="w_190"/>
+      </span>
+    </term>
+    <term tid="t_191" lemma="zou" type="open">
+      <span>
+        <target id="w_191"/>
+      </span>
+    </term>
+    <term tid="t_192" lemma="hier" type="open">
+      <span>
+        <target id="w_192"/>
+      </span>
+    </term>
+    <term tid="t_193" lemma="langer" type="open">
+      <span>
+        <target id="w_193"/>
+      </span>
+    </term>
+    <term tid="t_194" lemma="moeten" type="open">
+      <span>
+        <target id="w_194"/>
+      </span>
+    </term>
+    <term tid="t_195" lemma="verblijven" type="open">
+      <span>
+        <target id="w_195"/>
+      </span>
+    </term>
+    <term tid="t_196" lemma="maar" type="open">
+      <span>
+        <target id="w_196"/>
+      </span>
+    </term>
+    <term tid="t_197" lemma="check" type="open">
+      <span>
+        <target id="w_197"/>
+      </span>
+    </term>
+    <term tid="t_198" lemma="morgen" type="open">
+      <span>
+        <target id="w_198"/>
+      </span>
+    </term>
+    <term tid="t_199" lemma="direct" type="open">
+      <span>
+        <target id="w_199"/>
+      </span>
+    </term>
+    <term tid="t_200" lemma="uit" type="open">
+      <span>
+        <target id="w_200"/>
+      </span>
+    </term>
+    <term tid="t_201" lemma="!!" type="open">
+      <span>
+        <target id="w_201"/>
+      </span>
+    </term>
+    <term tid="t_202" lemma="absoluut" type="open">
+      <span>
+        <target id="w_202"/>
+      </span>
+      <sentiment sentiment_modifier="intensifier" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_203" lemma="geen" type="open">
+      <span>
+        <target id="w_203"/>
+      </span>
+      <sentiment sentiment_modifier="shifter" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_204" lemma="aanrader" type="open" pos="N">
+      <span>
+        <target id="w_204"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_205" lemma="om" type="open">
+      <span>
+        <target id="w_205"/>
+      </span>
+    </term>
+    <term tid="t_206" lemma="naartoe" type="open">
+      <span>
+        <target id="w_206"/>
+      </span>
+    </term>
+    <term tid="t_207" lemma="te" type="open">
+      <span>
+        <target id="w_207"/>
+      </span>
+    </term>
+    <term tid="t_208" lemma="gaan" type="open">
+      <span>
+        <target id="w_208"/>
+      </span>
+    </term>
+    <term tid="t_209" lemma="!" type="open">
+      <span>
+        <target id="w_209"/>
+      </span>
+      <sentiment sentiment_modifier="intensifier" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+  </terms>
+  <entities>
+    <entity type="PER" eid="e_1">
+      <span>
+        <target id="t_20"/>
+      </span>
+    </entity>
+    <entity type="PER" eid="e_2">
+      <span>
+        <target id="t_117"/>
+      </span>
+    </entity>
+    <entity type="PER" eid="e_3">
+      <span>
+        <target id="t_27"/>
+      </span>
+    </entity>
+    <entity type="ORG" eid="e_4">
+      <span>
+        <target id="t_59"/>
+      </span>
+    </entity>
+    <entity type="MISC" eid="e_5">
+      <span>
+        <target id="t_81"/>
+      </span>
+      <span>
+        <target id="t_98"/>
+      </span>
+    </entity>
+    <entity type="MISC" eid="e_6">
+      <span>
+        <target id="t_111"/>
+      </span>
+    </entity>
+  </entities>
+  <properties>
+    <property type="room" pid="p_1">
+      <span>
+        <target id="t_59"/>
+      </span>
+      <span>
+        <target id="t_69"/>
+      </span>
+      <span>
+        <target id="t_77"/>
+      </span>
+      <span>
+        <target id="t_86"/>
+      </span>
+    </property>
+    <property type="restaurant" pid="p_2">
+      <span>
+        <target id="t_36"/>
+      </span>
+      <span>
+        <target id="t_103"/>
+      </span>
+      <span>
+        <target id="t_105"/>
+      </span>
+      <span>
+        <target id="t_108"/>
+      </span>
+      <span>
+        <target id="t_125"/>
+      </span>
+      <span>
+        <target id="t_140"/>
+      </span>
+      <span>
+        <target id="t_145"/>
+      </span>
+    </property>
+    <property type="cleanliness" pid="p_3">
+      <span>
+        <target id="t_31"/>
+      </span>
+      <span>
+        <target id="t_54"/>
+      </span>
+      <span>
+        <target id="t_70"/>
+      </span>
+      <span>
+        <target id="t_82"/>
+      </span>
+      <span>
+        <target id="t_97"/>
+      </span>
+    </property>
+    <property type="sleeping_comfort" pid="p_4">
+      <span>
+        <target id="t_32"/>
+      </span>
+    </property>
+    <property type="facilities" pid="p_5">
+      <span>
+        <target id="t_14"/>
+      </span>
+    </property>
+    <property type="staff" pid="p_6">
+      <span>
+        <target id="t_111"/>
+      </span>
+    </property>
+  </properties>
+  <opinions>
+    <opinion oid="o_1">
+      <opinion_target>
+        <span>
+          <target id="t_32"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_31"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_2">
+      <opinion_target>
+        <span>
+          <target id="t_36"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_35"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_3">
+      <opinion_target>
+        <span>
+          <target id="t_44"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="2">
+        <span>
+          <target id="t_46"/>
+          <target id="t_48"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_4">
+      <opinion_target>
+        <span>
+          <target id="t_56"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-1">
+        <span>
+          <target id="t_54"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_5">
+      <opinion_target>
+        <span>
+          <target id="t_72"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-1">
+        <span>
+          <target id="t_70"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_6">
+      <opinion_target>
+        <span>
+          <target id="t_80"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_82"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_7">
+      <opinion_target>
+        <span>
+          <target id="t_96"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_93"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_8">
+      <opinion_holder>
+        <span>
+          <target id="t_132"/>
+        </span>
+      </opinion_holder>
+      <opinion_target>
+        <span>
+          <target id="t_116"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-1">
+        <span>
+          <target id="t_113"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_9">
+      <opinion_holder>
+        <span>
+          <target id="t_132"/>
+        </span>
+      </opinion_holder>
+      <opinion_target>
+        <span>
+          <target id="t_135"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-1">
+        <span>
+          <target id="t_134"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_10">
+      <opinion_target>
+        <span>
+          <target id="t_186"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-1">
+        <span>
+          <target id="t_185"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_11">
+      <opinion_target>
+        <span>
+          <target id="t_188"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-1">
+        <span>
+          <target id="t_187"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_12">
+      <opinion_target>
+        <span>
+          <target id="t_206"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="negative" strength="-2">
+        <span>
+          <target id="t_204"/>
+          <target id="t_203"/>
+          <target id="t_202"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+  </opinions>
+</KAF>

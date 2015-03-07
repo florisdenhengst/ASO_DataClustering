@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KAF xml:lang="nl">
+  <linguisticProcessors layer="text">
+    <lp timestamp="2013-01-06T18:31:05CET" version="2.0" name="SentenceTokenizer"/>
+  </linguisticProcessors>
+  <linguisticProcessors layer="terms">
+    <lp timestamp="2013-01-06T18:31:05CET" version="2.0" name="SentenceTokenizer"/>
+    <lp timestamp="2013-01-06T18:31:05CET" version="1.0" name="SimplePolarityTagger"/>
+  </linguisticProcessors>
+  <linguisticProcessor layer="opinions">
+    <lp timestamp="2013-01-06T18:31:05CET" version="1.0" name="SimpleOpinionDetector"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="properties">
+    <lp timestamp="2013-01-06T18:31:05CET" version="1.0" name="SimplePropRecognizer_lookup"/>
+  </linguisticProcessor>
+  <linguisticProcessor layer="entities">
+    <lp timestamp="2013-01-06T18:31:05CET" version="1.0" name="SimpleNER_lookup"/>
+  </linguisticProcessor>
+  <text>
+    <wf wid="w_1" para="1" sent="1">Leuke</wf>
+    <wf wid="w_2" para="1" sent="1">inrichting</wf>
+    <wf wid="w_3" para="1" sent="1">,</wf>
+    <wf wid="w_4" para="1" sent="1">hele</wf>
+    <wf wid="w_5" para="1" sent="1">mooie</wf>
+    <wf wid="w_6" para="1" sent="1">ligging</wf>
+    <wf wid="w_7" para="1" sent="1">(</wf>
+    <wf wid="w_8" para="1" sent="1">vooral</wf>
+    <wf wid="w_9" para="1" sent="1">in</wf>
+    <wf wid="w_10" para="1" sent="1">de</wf>
+    <wf wid="w_11" para="1" sent="1">zomer</wf>
+    <wf wid="w_12" para="1" sent="1">leuk</wf>
+    <wf wid="w_13" para="1" sent="1">)</wf>
+    <wf wid="w_14" para="1" sent="1">.</wf>
+    <wf wid="w_15" para="1" sent="2">Personeel</wf>
+    <wf wid="w_16" para="1" sent="2">was</wf>
+    <wf wid="w_17" para="1" sent="2">behulpzaam</wf>
+    <wf wid="w_18" para="1" sent="2">en</wf>
+    <wf wid="w_19" para="1" sent="2">kwam</wf>
+    <wf wid="w_20" para="1" sent="2">met</wf>
+    <wf wid="w_21" para="1" sent="2">goede</wf>
+    <wf wid="w_22" para="1" sent="2">parkeertips</wf>
+    <wf wid="w_23" para="1" sent="2">:</wf>
+    <wf wid="w_24" para="1" sent="2">)</wf>
+  </text>
+  <terms>
+    <term tid="t_1" lemma="leuke" type="open">
+      <span>
+        <target id="w_1"/>
+      </span>
+    </term>
+    <term tid="t_2" lemma="inrichting" type="open">
+      <span>
+        <target id="w_2"/>
+      </span>
+    </term>
+    <term tid="t_3" lemma="," type="open">
+      <span>
+        <target id="w_3"/>
+      </span>
+    </term>
+    <term tid="t_4" lemma="hele" type="open">
+      <span>
+        <target id="w_4"/>
+      </span>
+    </term>
+    <term tid="t_5" lemma="mooie" type="open">
+      <span>
+        <target id="w_5"/>
+      </span>
+    </term>
+    <term tid="t_6" lemma="ligging" type="open">
+      <span>
+        <target id="w_6"/>
+      </span>
+    </term>
+    <term tid="t_7" lemma="(" type="open">
+      <span>
+        <target id="w_7"/>
+      </span>
+    </term>
+    <term tid="t_8" lemma="vooral" type="open">
+      <span>
+        <target id="w_8"/>
+      </span>
+    </term>
+    <term tid="t_9" lemma="in" type="open">
+      <span>
+        <target id="w_9"/>
+      </span>
+    </term>
+    <term tid="t_10" lemma="de" type="open">
+      <span>
+        <target id="w_10"/>
+      </span>
+    </term>
+    <term tid="t_11" lemma="zomer" type="open">
+      <span>
+        <target id="w_11"/>
+      </span>
+    </term>
+    <term tid="t_12" lemma="leuk" type="open" pos="G">
+      <span>
+        <target id="w_12"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_13" lemma=")" type="open">
+      <span>
+        <target id="w_13"/>
+      </span>
+    </term>
+    <term tid="t_14" lemma="." type="open">
+      <span>
+        <target id="w_14"/>
+      </span>
+    </term>
+    <term tid="t_15" lemma="personeel" type="open">
+      <span>
+        <target id="w_15"/>
+      </span>
+    </term>
+    <term tid="t_16" lemma="was" type="open">
+      <span>
+        <target id="w_16"/>
+      </span>
+    </term>
+    <term tid="t_17" lemma="behulpzaam" type="open" pos="G">
+      <span>
+        <target id="w_17"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_18" lemma="en" type="open">
+      <span>
+        <target id="w_18"/>
+      </span>
+    </term>
+    <term tid="t_19" lemma="kwam" type="open">
+      <span>
+        <target id="w_19"/>
+      </span>
+    </term>
+    <term tid="t_20" lemma="met" type="open">
+      <span>
+        <target id="w_20"/>
+      </span>
+    </term>
+    <term tid="t_21" lemma="goede" type="open" pos="G">
+      <span>
+        <target id="w_21"/>
+      </span>
+      <sentiment polarity="positive" resource="VUA_olery_lexicon_nl_lmf"/>
+    </term>
+    <term tid="t_22" lemma="parkeertips" type="open">
+      <span>
+        <target id="w_22"/>
+      </span>
+    </term>
+    <term tid="t_23" lemma=":" type="open">
+      <span>
+        <target id="w_23"/>
+      </span>
+    </term>
+    <term tid="t_24" lemma=")" type="open">
+      <span>
+        <target id="w_24"/>
+      </span>
+    </term>
+  </terms>
+  <entities>
+    <entity type="MISC" eid="e_1">
+      <span>
+        <target id="t_11"/>
+      </span>
+    </entity>
+  </entities>
+  <properties>
+    <property type="location" pid="p_1">
+      <span>
+        <target id="t_6"/>
+      </span>
+    </property>
+    <property type="staff" pid="p_2">
+      <span>
+        <target id="t_15"/>
+      </span>
+      <span>
+        <target id="t_17"/>
+      </span>
+    </property>
+  </properties>
+  <opinions>
+    <opinion oid="o_1">
+      <opinion_target>
+        <span>
+          <target id="t_11"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_12"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_2">
+      <opinion_target>
+        <span>
+          <target id="t_19"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_17"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+    <opinion oid="o_3">
+      <opinion_target>
+        <span>
+          <target id="t_22"/>
+        </span>
+      </opinion_target>
+      <opinion_expression polarity="positive" strength="1">
+        <span>
+          <target id="t_21"/>
+        </span>
+      </opinion_expression>
+    </opinion>
+  </opinions>
+</KAF>
